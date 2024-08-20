@@ -1,0 +1,321 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{array}
+\usepackage[in]{fullpage}
+\usepackage{verbatim}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{\baselineskip}{0pt}
+\titleformat*{\section}{\normalsize\bfseries\MakeUppercase}
+
+\titlespacing{\subsection}{0pt}{0.5\baselineskip}{0pt}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+%\setlength{\parindent}{0in}
+
+% precede modeling with a short discussion of motivation behind modeling
+% 1. understanding vs. prediction
+% 2. complex is not necessarily better. elegant is best!
+
+\begin{document}
+\textbf{ENVS S422: Earth's Climate System\\
+Modeling Exercise 3: Global energy balance}\\%\footnote{Based on exercises developed by Dave Bice at Penn State University.}}\\
+
+The Earth's climate system is an elaborate energy flow system in which solar energy enters the system, is absorbed,
+reflected, stored, transformed, put to work, and released back into space. The balance between the incoming energy and the
+outgoing energy determines whether the planet becomes cooler, warmer, or stays the same. The Earth reflects about 34\% of the solar
+energy received; the remainder is used to operate the climate and maintain the temperature of our planet. The Earth also radiates energy
+back into space --- about 66\% of the energy that is received. Since the amount of energy received approximately equals the amount radiated and reflected back to space, the Earth is always approximately in a steady-state.
+
+Earth's energy budget has important links with the global carbon cycle and the global hydrologic cycle and is also affected by
+the distribution of land masses and mountains and oceans over the surface of the Earth. Thus, a complete model of the
+climate system would include the dynamics of these other systems. For now, though, we will focus on just the energy flows. The details of how the solar energy is put to use, transformed, transferred, stored, and released is described in the next section. 
+
+For each model experiment, you should submit a brief 1-paragraph response to the questions that are being explored in the exercise and \textit{at least} one graph to help justify your response.
+
+Due date: 15 February 2021
+
+\section{Accessing STELLA}
+STELLA is available on the university computers, which you can access from home by navigating to \url{https://mydesktop.uas.alaska.edu} and logging in with your UA credentials. You have the option of installing the VMware Horizon client or running VMware through a web browser. I prefer the former just because it gives you a little more space on your screen. Also, remember when working on the university computers that you should save files to your personal space (Z drive) and/or email the files to yourself. You should be able to find STELLA by using the search box, but if that doesn't work you can also find it by navigating to \verb+C:\Program Files (x86)\isee systems\STELLA 10.0+ in Windows Explorer.
+
+\section{Basic Concepts and Processes}
+\subsection{Insolation / incoming solar radiation}
+Hydrogen fusion in the Sun creates an immense amount of energy, heating the surface to around 6000 K. This heat causes the Sun to radiate energy outwards in the form of ultraviolet and visible light. To simplify matters, we'll say that the total amount of solar energy received by the Earth is equal to 100 units -- think of this as 100\% of the actual total ($55.6\times{10}^{23}\mbox{ J/yr}$). This number represents about 10,000 times the amount of energy generated and consumed by humans each year.
+
+\subsection{Reflection / albedo}
+Of the incoming solar energy, 28 units are immediately reflected by clouds and 4 units are reflected back from the land
+surface. Clouds are presently estimated to cover about 60\% of the Earth; thus, clouds reflect about 47\% of the solar energy that hits them. In contrast, the Earth's surface, which is dominated by water, reflects about 7\% of the incident solar energy. The fraction of light that is reflected by a material is called the albedo. Black materials
+have an albedo of 0 (no reflection) if they are perfectly black and perfectly white materials have an albedo of 1.0 (total reflection). The
+table below lists some representative albedos for a variety of materials that cover the surface. Most of these albedos are sensitive to the
+angle of incidence of the sunlight; this is especially true for water. When the Sun is at an angle of 40$^\circ$ and higher relative to the horizon, the albedo of the water is fairly constant, but as the angle decreases below 40$^\circ$, the albedo increases dramatically, so that it is about 0.5 at a Sun angle of 10$^\circ$ and 1.0 at a Sun angle of 0$^\circ$.
+
+\begin{table}[h]
+\begin{tabular}{lc}
+\multicolumn{2}{c}{\textbf{Albedo of Earth materials}}\\
+Substance & Albedo\\
+\hline
+Whole planet & 0.31\\
+Cumulonimbus clouds & 0.9\\
+Stratocumulus clouds & 0.6\\
+Cirrus clouds & 0.5\\
+Water & 0.06--0.1\\
+Ice $\&$ fresh snow & 0.9\\
+Sand & 0.35\\
+Grasslands & 0.18--0.25\\
+Deciduous forest & 0.15--0.18\\
+Coniferous forest & 0.09--0.15\\
+Rain forest & 0.07--0.15\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Absorption of energy}
+As mentioned above, 32 units of solar energy are reflected by the Earth; the remaining 68 units are absorbed in the atmosphere and at the Earth surface. Gases in the atmosphere absorb 18 units, while the Earth surface absorbs 50 units (mostly in the oceans). The absorption of incoming short wave solar radiation in the atmosphere is due to water vapor, oxygen, ozone, and dust particles, all of which absorb energy within the ultraviolet-visible portion of the spectrum. Materials on the surface --- rocks, plants, liquid water --- also absorb energy in this part of the spectrum. The Earth surface and the atmosphere also absorb long wave (infrared) radiation emitted by the Earth and the atmosphere.
+
+\subsection{Storage of thermal energy}
+As the atmosphere and Earth surface absorb ultraviolet rays, visible light, or infrared energy, they gain thermal energy and their
+temperatures rise. The rate of temperature rise with increasing thermal energy varies considerably between materials --- this relationship is
+described by the substance's heat capacity. The heat capacities for some common materials are given in the table
+below.
+
+\begin{table}[h]
+\begin{tabular}{lc}
+\multicolumn{2}{c}{\textbf{Heat capacity of Earth materials}}\\
+Substance & Heat Capacity [J/(kg K)]\\
+\hline
+Water & 4184\\
+Ice & 2008\\
+Average rock & 2000\\
+Wet sand (20\% water) & 1500\\
+Snow & 878\\
+Dry sand & 840\\
+Vegetated land & 830\\
+Air & 700\\
+\hline
+\end{tabular}
+\end{table}
+
+The vast range of heat capacities is extremely important to the operation of our climate system, and in particular, we should note the
+very high heat capacity of water --- it heats up slowly, cools slowly, and retains heat better than any other common substance. Heat
+capacities are also important when it comes to figuring out how much thermal energy is stored in a given reservoir. For instance, if we
+know the mass of a material and its heat capacity and temperature, we can calculate how much thermal energy is stored in the
+material.
+
+The heat capacities also tell us something about the rate of warming. For example, the table above tells us that soil (some
+combination of wet and dry sand and vegetation gives a heat capacity of around 1000 J/(kg K)) warms up about 4 times faster than water, given
+the same rate of energy input, and that air warms up somewhat faster than soil. The rate of warming is actually a bit more complex than just
+comparing heat capacities because the rate of energy input depends on the albedo.
+
+\subsection{Heat emission / radiation}
+All objects whose temperature is above absolute zero emit energy at a rate that depends on their temperature. This energy is emitted in the
+form of electromagnetic radiation whose average wavelength is inversely proportional to the object's temperature. The rate of energy
+given off through radiation by an object is proportional to the fourth power of the object's temperature and is described by the Stefan-Boltzmann Law:
+
+$$\dot{E} = \epsilon\sigma{A}T^4,$$
+
+where $\dot{E}$ is the rate of energy flow, $\epsilon$ is the emissivity of the object, $\sigma$ is the Stefan-Boltzmann constant, $A$ is the
+surface area of the object, and $T$ is the temperature of the object (in Kelvin). The Stefan-Boltzmann constant has a value of
+$5.67\times{10}^{-8}\mbox{ W/(m}^2\,\mbox{K}^4\mbox{)}$. The emissivity is a dimensionless number and ranges from 0 to 1; a perfect black body has an emissivity of 1, while very shiny objects have an emissivity close to 0. Given the range of temperatures on Earth's surface, this emitted radiation occurs mainly within the infrared part of the spectrum. Earth's
+surface emits 116 units of energy as infrared radiation; of this, 108 units are absorbed by greenhouse gases in the atmosphere, with the
+remaining 8 units passing through the atmosphere (this ``leak'' of 8 units is a measure of the efficiency of Earth's greenhouse). The
+atmosphere also emits infrared energy --- 102 units are directed back to the Earth's surface, while 60 units are directed to outer space. The 102 units sent back to the surface are absorbed and then re-radiated to the atmosphere, which again absorbs most of it and then returns much of
+that back to the surface, recycling the energy and giving rise to the famous greenhouse effect.
+
+\subsection{Heat transport by evaporation and condensation}
+Earth's surface also contributes heat to the atmosphere in two other ways. 30 units of energy are transferred to the atmosphere by the
+evaporation of water at the surface and the later condensation of that water vapor in the atmosphere. When water evaporates, it steals
+heat from the surface; that heat is called latent heat and is released when the vapor condenses.
+
+\subsection{Heat transfer by convection}
+Air in direct contact with the surface is heated and then rises, transporting that heat to higher levels in the atmosphere --- this process of
+convection transfers 6 units of energy from the surface to the atmosphere.
+
+\section{Constructing a STELLA Model of Earth's energy balance}
+The climate system of the Earth is a set of related processes that transfer and transform energy, store it and put it to work,
+and in the process, determine the temperature of our planet. This system is therefore an \textit{energy flow system} rather than a
+material flow system; it is also an open system if the ultimate sources and sinks of this energy are not considered in detail. For this exercise we will use two major reservoirs --- the atmosphere and the Earth's surface. There are numerous flows in this system; by combining some of them we will arrive at six flows.
+
+\subsection{Initial values of reservoirs}
+To create a model of this energy system, we need to know the starting amounts of thermal energy in the various reservoirs. This model
+will have just two reservoirs where energy is stored --- the atmosphere and the Earth's surface, which includes the oceans and the soil.
+Let's assume that the oceans cover 70\% of the surface (an area of about $3.57\times{10}^{14}$ m$^{2}$) and about 35 meters of water is actively involved in the heat exchange with the surface on a time scale of a few years. This allows us to calculate the total mass of water (using a density of 1000 kg/m$^3$), and then if we assume an average temperature of 15$^\circ$C (or 288 K) and a heat capacity from the table above, we get the total energy stored in the oceanic part of the reservoir. This number, $1.5\times{10}^{25}$ J, is about 2.7 times greater than the total amount of energy received by the Earth from the Sun in one year --- or 270 of our energy units because we've said that 100 units is equal to the total annual solar energy received. Going through the same calculations for soil (land area is $1.53\times{10}^{14}$ m$^2$), assuming that only one meter of soil or rock is involved, using a density of 1500 kg/m$^3$ and a heat capacity of 1000 J/(kg K), we end up with $6.6\times{10}^{22}$ J, a measly 1.2 units of energy. So the Earth Surface reservoir will be given an initial value of 271.2 units. Doing the same calculation for the atmosphere, assuming a mass of $5.14\times{10}^{18}$ kg, an average temperature of -18$^{\circ}$C, and a heat capacity of 700 J/(kg K), results in $9.17\times{10}^{23}$ J, or 16.5 units of energy for the atmosphere.
+
+\subsection{Definition of flows}
+The next step is to decide how these flows will be mathematically defined --- will they be constants or equations with variables? 
+
+\subsubsection*{Solar to surface}
+This is the solar energy that reaches and is absorbed by the land surface, which is strongly dependent on the percentage of the surface
+covered by clouds, but also on the albedo of the surface, and the portion of the insolation that is absorbed by the atmosphere. A simple
+formulation for this is:
+$\rm solar\_to\_surface = (solar\_input-reflected\_insolation) \times (1-SW\_atmosphere\_absorption) \times (1-$ $\rm surface\_albedo)$
+\begin{itemize}
+\item solar\_input will start with a constant value of 100 units/year (it will be altered in subsequent experiments). 
+\item reflected\_insolation is the solar radiation reflected back into space by clouds and is defined as:
+reflected\_insolation = solar\_input*cloud\_cover*cloud\_Albedo
+\item cloud\_cover is the fraction of the Earth's surface covered by clouds, initially set at 0.60, equivalent to 60\%. 
+\item cloud\_Albedo is set at 28/60, close to 0.5. 
+\item SW\_atmosphere\_absorption is the fraction of solar insolation that is absorbed by the atmosphere, estimated to be 0.25 or 25\%. 
+\item surface\_albedo is the average albedo of the surface (dominated by water in the oceans) and is entered as 4/54, a bit less than 0.1.
+\end{itemize}
+
+The result of these calculations is that 50 units of energy are absorbed by the surface.
+
+\subsubsection*{Solar to atmosphere}
+This flow is defined using the same approach as the Solar to Surface flow:
+$$\rm solar\_to\_atmosphere = SW\_atmosphere\_absorption \times (solar\_input-reflected\_insolation)$$
+The terms in this equation are defined as described above, and the result of the calculations is that 18 units of energy are absorbed by
+the atmosphere.
+
+\subsubsection*{Surface LW to space}
+Some portion of the infrared radiation emitted from the surface escapes, passing through the atmosphere without being absorbed --- this
+is energy lost from the system. The magnitude of this flow is currently estimated to be 8 units of energy, but it is also a function of the surface temperature (specifically the fourth power of the temperature) of the surface since the temperature determines the overall amount of
+infrared energy emitted. A simple way of expressing this is:
+$$\rm surface\_LW\_to\_space = 8\times(surface\_temperature{/}288)^4 $$
+Here, 288 is the starting temperature in Kelvin of the Earth's surface (15$^\circ$C) and surface\_temperature is the temperature in K at any time during the model run.
+
+\subsubsection*{Atmosphere LW to space}
+Analogous to the previous flow, this one is designed to change as the temperature of the atmosphere changes:
+$$\rm atmosphere\_LW\_to\_space = 60\times(atmosphere\_temperature/255)^4$$
+The starting temperature of the atmosphere is here set at 255 K or -18$^\circ$C.
+
+\subsubsection*{Surface to atmosphere}
+This flow is a conglomeration of several different processes --- emission of infrared energy (116 units), heat transfer through
+evaporation and condensation, and convective motion of air that is warmed at the surface (36 units). A full mathematical formulation of
+these three processes would be far too complex for a model of this sort, so we will instead apply the simple assumption that all of these
+processes will depend on the temperature of the Earth surface in a relatively simple fashion:
+$$\rm surface\_to\_atmosphere = 108\times(surface\_temperature/288)^4 + 36\times surface\_temperature/288$$
+As discussed above, the emission of infrared energy is proportional to the fourth power of the temperature, and we'll assume that the other
+processes follow a more basic linear relationship with temperature. In this linear relationship, if the surface temperature doubles,
+then the heat flow also doubles.
+
+\subsubsection*{Atmosphere LW to Surface}
+This flow represents the emission of infrared energy from the atmosphere back to the surface --- the greenhouse effect. The magnitude
+of this flow is really just a function of the temperature of the atmosphere (which in turn is a function of how much infrared energy is
+absorbs), and so we define the flow with a non-linear (fourth power) temperature dependence like the other flows that represent
+radiative heat transport:
+$$\rm atmosphere\_LW\_to\_surface = 102\times(atmosphere\_temperature/255)^4$$
+
+\subsection{Temperature of the atmosphere and the Earth's surface}
+The temperature of an object is linearly related to the amount of heat (thermal energy) in the object. The atmosphere and surface temperature are specified in STELLA using a linear relationship and set the initial temperatures to 255 K (-18$^\circ$C) and 288 K (15$^\circ$C), respectively. Thus,
+$$\rm atmosphere\_temperature = 255\times atmosphere/16.5$$
+and
+$$\rm surface\_temperature = 288\times surface/271.2$$
+
+\subsection{Model time step}
+Because of the energy flow values chosen here -- 100 units is equal to the amount of energy received by Earth each year -- the basic unit of time for the model is one year. But, the calculations have to be done in shorter time steps because of the magnitudes of the flows relative to the size of the atmosphere reservoir. As a general rule of thumb, the time step, or DT of the numerical integration that the program performs has to be small enough so that in each calculation, the withdrawals from a reservoir do not exceed the amount in the reservoir. As with all numerical integrations, the shorter the time step, the better the solution --- the trade-off is that a shorter time step means more calculations and thus slower performance. In the case of this model, a time step of 0.01 gives good results (reducing the time step further does not alter the results).
+
+\section{Numerical experiments}
+While performing experiments with this model, it will be helpful to monitor changes by plotting the variables called surface\_delta\_T and atmosphere\_delta\_T; these represent the change in temperature of the reservoirs from their initial values. But, you should feel free to plot any and all parameters in the model in order to better understand why the system behaves as it does. For each of the
+experiments below, there are a few questions that you should attempt to address. 
+
+\subsection{Altering the solar input --- investigating the response time and sensitivity}
+In this experiment, you will investigate two simple questions: 
+\begin{enumerate}
+\item How quickly does the model climate system respond to changes, i.e. what is its
+response time?
+\item How sensitive is the model to changes in the solar energy received by Earth? If you change the solar input by 3\%, how much warmer does the the model Earth become and how quickly will it accomplish this warming? What is the pattern of this response? What parts of the system react most quickly/slowly?
+\end{enumerate}
+
+You can begin to answer these two questions very simply, by changing the value of the solar input in (1) a stepwise fashion and (2) with a spike that jumps up to some value and then returns to its original value. The easiest way to do these experiments is to redefine the solar\_input by making it a graphical function of time. Observe the response of the system to these perturbations by plotting the surface\_delta\_T and atmosphere\_delta\_T converters.
+
+What are the lag times of the two reservoirs? Why is one shorter than another? For the second experiment, are the lag times a function of the length of time of the solar spike? Based on these experiments, what can you predict about the relationship between the winter solstice (minimum insolation in N. Hemisphere) and the coldest part of the year?
+
+\subsection{Altering the cloud cover}
+In this experiment, you will investigate what happens if you change the percentage of the surface covered by clouds. You can easily explore this question by first increasing and then decreasing the percent cloud cover converter --- up to 65\% and then down to 55\%. Before actually
+running the model, make a prediction about what will happen. As before, it is probably best to study the changes in the temperatures of the two reservoirs using the surface\_delta\_T and atmosphere\_delta\_T converters. 
+
+Moving beyond this simple experiment, you should next modify the way that cloud cover is defined, making it dependent on the global
+temperature. The reasoning here is that when the Earth is very cold, there will be less evaporation, and therefore less water vapor to form
+clouds in the atmosphere, and conversely when it is warmer, there will be a greater percentage of the Earth covered by clouds. In
+reality, as the water content of the atmosphere changes, we would have to change the part of the system that relates to the greenhouse
+efficiency and the latent heat transport (through evaporation and condensation of water) if we wanted a model that is as realistic as
+possible. But, we will ignore these refinements in order to maintain the simplicity of the model.
+To make the change, draw a connector arrow between the surface\_temperature converter and the cloud\_cover converter; this will cause a
+question mark to appear, signaling the need to redefine the converter. Double-click on cloud\_cover and set it equal to surface\_temperature
+and click on the ``graphical'' button; this will place surface\_temperature along the x-axis. Set the lower range of the x-axis to 258 (the
+units here are K) and the upper range to 318, giving you a range of 30 K on either side of the starting temperature. Make sure that the
+Data Points box of this dialog window is set at 7, and then you will see that a temperature of 288 is one of the Input values; this will
+allow you to set the Cloud\_Cover at 0.6 when the surface temperature is 288, thus preserving the initial conditions of the model.
+Where do you go from here? There really aren't any data we can turn to draw this graph properly, that is, in a way that mimics what
+really happens on Earth; the main reason is that we have not observed the global cloud cover over this whole range of temperatures.
+But, it is generally believed that at lower temperatures, the cloud cover will decrease and at higher temperatures, it will increase. This suggests that the slope of the line ought to be positive, moving up to the right. For the sake of simplicity,
+let's say that over this range of temperatures, the cloud cover will vary according to the table below:
+
+\begin{table}[h]
+\begin{tabular}{lc}
+Input & Output\\
+\hline
+258 & 0.015\\
+268 & 0.110\\
+278 & 0.360\\
+288 & 0.600\\
+298 & 0.840\\
+308 & 0.920\\
+318 & 0.950\\
+\hline
+\end{tabular}
+\end{table}
+
+Now, how do you evaluate the effect of this change? If you just run this model without making any additional changes,
+what will happen? Since we've defined the graph such that the initial cloud cover will be 0.60, and cloud cover can change only if the
+temperature of the surface reservoir changes, the system should be in a steady state, identical to the initial model. This might lead to the
+false conclusion that this change had no effect on the system. A more meaningful control in this case is the experiment where we changed the solar input to 103, effectively turning up the heat. But before running this modified model, make a prediction about what will happen.
+This new change represents a kind of feedback mechanism. Is it positive or negative? Explain why this model behaves as it does.
+How does this model differ in terms of performance with the original (the ``control'' model)?
+
+\subsection{Removing the greenhouse effect}
+Now you will investigate the behavior of the model upon removal of the greenhouse effect; this is clearly a more severe modification than the previous experiments. First set the solar input back to 100 and keep the cloud cover dependent on temperature.
+
+In the model the greenhouse effect is represented by the absorption of 108 units of infrared energy by the atmosphere and then the return of 102 units back to the land surface. The 102 units returning are simply a result of the radiation of the atmosphere; it will radiate heat back to the surface regardless of how or from where that heat energy came from. So, in looking for the right way to
+dismantle the greenhouse, you will leave the atmosphere\_LW\_to\_surface flow alone. Similarly, the 58 units of energy leaving the
+atmosphere is just the rate of upward energy loss from the atmosphere, so you'll leave that alone too. The simplest way to remove the
+greenhouse effect is to remove the 108 units of energy emitted by the land that is absorbed by the atmosphere in the original model.
+But, those 108 units can't just disappear; this energy has to go somewhere, and by increasing the surface\_LW\_to\_space flow from 8
+to 116, you can conserve the energy in the system. Leave the Cloud\_Cover defined as previously --- varying with the global
+temperature.
+
+To make this modification, you need to change two flows --- surface\_to\_atmosphere and surface\_LW\_to\_space. The changed
+definitions of the flows are summarized below:
+$$\rm surface\_LW\_to\_space = 116\times(surface\_temperature/288)^4$$
+$$\rm surface\_to\_atmosphere = (36\times surface\_temperature/288)$$
+Here, the original model serves as an appropriate control if we simply want to understand what happens when we turn off the
+greenhouse. As always, it is useful to make a prediction before running the model.
+
+Based on the results, how much of a warming effect does the greenhouse effect have on this model?
+
+\subsection{Enhancing the Greenhouse}
+Next explore the effect of enhancing the greenhouse by simulating what will happen in the near future as we continue to burn more
+fossils fuels and clear more forests, thus increasing the concentration of carbon dioxide in the atmosphere. The goal here is to model the
+effects of doubling atmospheric CO$_2$ . At present, CO$_2$ accounts for perhaps 30\% of the total infrared energy absorbed by the
+atmosphere, which would be about 36 units of the 108 that are absorbed by all greenhouse gases in the atmosphere. You might imagine
+then that doubling CO$_2$ would lead to an additional 36 units of energy absorbed, but in fact, the relationship between the concentration
+of CO$_2$ in the atmosphere and the absorption of heat is not linear --- at higher concentrations, increases in CO$_2$ produce less and less of an effect. Calculations have shown that a doubling of CO$_2$ is expected to increase the energy trapped by 4 W/m$^2$, or 1.2 units in the model here. So, to modify the model, increase the infrared part of the surface\_heat\_to\_atmosphere flow to 91.2 units and decrease the surface\_LW\_to\_space flow to 6.8 units. The modified flows are thus:
+$$\rm surface\_LW\_to\_space = 6.8\times(surface\_temperature/288)^4$$
+$$\rm surface\_to\_atmosphere=109.2\times(surface\_temperature/288)^4+36\times surface\_temperature/288$$
+
+How much warming does this produce? For reference, keep in mind that over the last 100 years, the global temperature appears
+to have increased by about 0.8$^\circ$C while the concentration of atmospheric CO$_2$ increased by about 20\% (going from about 290
+ppm to 350 ppm). In considering these results, it is interesting to note that published estimates of the global warming due to a
+doubling of CO$_2$, made using the most sophisticated climate models give a possible range from 1.5 to 4.5$^\circ$C.
+
+\subsection{Comparing Different Causes of Warming}
+Here, we consider the question of whether we can distinguish between warming caused by an increase in the solar input vs. warming
+caused by an enhanced greenhouse. This is related to the question of whether or not we can rule out the possibility that the current
+warming observed for our planet is caused by a slight increase in the solar input. It turns out that with a solar\_input value of 102, you
+get virtually the same amount of warming of the land surface as you do with the enhanced greenhouse that results from a doubling of
+CO$_2$. This experiment is easiest to analyze in the form of two separate models run at the same time. To do this, copy and paste the
+existing model off to the side of the initial model, then restore the greenhouse to the initial state in one of the models and increase its
+solar\_input to 101.25, leaving the other model with the enhanced greenhouse as described in experiment 4 above. Plot similar elements
+of the two models on the same graphs to look for variance in these models. After running these tandem models, can you distinguish between warming caused by an increase in the insolation vs. warming caused by an enhanced greenhouse? What kinds of data would you need to examine to be able to answer this question for the Earth?
+
+Global measures of the temperature of the atmosphere are not too precise and the record does not go back very far, so a direct test of this
+model result is not easy. However, with a warmer atmosphere, the night time low temperatures of the surface should also be warmer. If
+this warming took place gradually, then the daytime highs of the surface would also be increasing, but less rapidly than the night time
+lows. Another way of saying this is that the magnitude of the daily surface temperature variation should be decreasing even as the
+whole system is warming. (The latest IPCC report indicates that the diurnal temperature range has not been observed to change.)
+
+
+\end{document}

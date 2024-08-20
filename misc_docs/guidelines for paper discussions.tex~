@@ -1,0 +1,40 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{array}
+%\usepackage[cm]{fullpage}
+\usepackage[top=1.5cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{verbatim}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+\newcommand{\squeezeup}{\vspace{-2.5mm}}
+
+
+
+
+\begin{document}
+\setlength{\parindent}{0in}
+%\baselineskip 4pt
+\newcommand{\tablespace}[0]{\vspace{8pt}}
+\textbf{ENVS S422}\\
+Guidelines for paper discussion\\
+
+\hrule
+Each student is expected to lead a discussion of one scientific article. Your primary job is to set the stage for the discussion. Give the motivation for the study and relate it to topics that we have been covering in class. Summarize what you think are the key findings and what parts of the paper are unresolved. Identify some particularly illustrative statements and relate them to the data or model that is being presented in the paper. What are the implications of the study in the context of Earth System Science? Note that you may need to incorporate additional material/ideas from the course textbook or elsewhere. Come prepared with open-ended questions to help stimulate discussion.
+
+Those students that are not presenting a paper are still expected to have read and critically analyzed the paper. To help facilitate the discussion, I will provide two to three questions for each reading that you should answer and submit at the beginning of class. Your participation grade will be based on both your responses to the questions and in your participation in the discussions.
+
+The papers that I have selected are intended to be challenging. One of the goals of this exercise is to learn how to \textit{read} scientific papers; by doing so, you will also gain an understanding of how to \textit{write} scientific papers. A common strategy when reading papers is to first focus on the introduction and conclusions, and then work your way into the discussion section. Often there is no need to get into the methods or model description unless the study is closely related to something that you are working on. Also, spend a lot of time trying to understand what the figures are telling you. A well-written paper uses words to weave together a series of figures. If you understand the figures, you should be able understand the main points of the paper.
+
+\hrulefill
+
+Grading criteria (10 pts):
+
+\begin{itemize}\itemsep -5pt \squeezeup
+\item paper objectives (2 pt)
+\item motivation/context within Earth System Science (2 pts)
+\item factually correct (2 pts)
+\item critical analysis (2 pts)
+\item stimulation of discussion (2 pts)
+\end{itemize} 
+
+\end{document}

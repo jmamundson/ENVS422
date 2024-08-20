@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name />
+        <uuid>d591533f-0672-489b-a20d-da84f86ec7b8</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>0</start>
+        <stop>12</stop>
+        <dt>0.01</dt>
+        <method>Euler</method>
+        <time_units>Time</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="atmosphere">
+            <eqn>16.5</eqn>
+            <inflow>solar_to_atmosphere</inflow>
+            <inflow>surface_to&#x0D;atmosphere</inflow>
+            <outflow>atmosphere&#x0D;LW_to_surface</outflow>
+            <outflow>atmosphere&#x0D;LW_to_space</outflow>
+            <non_negative />
+            <display x="208" y="234" color="blue">
+                <label_angle>87</label_angle>
+            </display>
+        </stock>
+        <stock name="surface">
+            <eqn>271.2</eqn>
+            <inflow>solar_to_surface</inflow>
+            <inflow>atmosphere&#x0D;LW_to_surface</inflow>
+            <outflow>surface_LW_to_space</outflow>
+            <outflow>surface_to&#x0D;atmosphere</outflow>
+            <non_negative />
+            <display x="370" y="378" color="blue">
+                <label_angle>134</label_angle>
+            </display>
+        </stock>
+        <flow name="solar_to_atmosphere">
+            <eqn>SW_atmosphere_absorption*(solar_input-reflected_insolation)</eqn>
+            <non_negative />
+            <display x="284" y="231" color="blue">
+                <label_angle>286</label_angle>
+                <pts>
+                    <pt x="338" y="231" />
+                    <pt x="230" y="231" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="solar_to_surface">
+            <eqn>(solar_input-reflected_insolation)*(1-SW_atmosphere_absorption)*(1-surface_albedo)</eqn>
+            <non_negative />
+            <display x="426" y="291" color="blue">
+                <pts>
+                    <pt x="478" y="291" />
+                    <pt x="374" y="291" />
+                    <pt x="374" y="361" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="surface_LW_to_space">
+            <eqn>8*(surface_temperature/288)^4</eqn>
+            <non_negative />
+            <display x="448" y="381" color="blue">
+                <pts>
+                    <pt x="392" y="381" />
+                    <pt x="505" y="381" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="atmosphere&#x0D;LW_to_space">
+            <eqn>60*(atmosphere_temperature/255)^4</eqn>
+            <non_negative />
+            <display x="123" y="233" color="blue">
+                <pts>
+                    <pt x="186" y="233" />
+                    <pt x="61" y="233" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="atmosphere&#x0D;LW_to_surface">
+            <eqn>102*(atmosphere_temperature/255)^4</eqn>
+            <non_negative />
+            <display x="280" y="382" color="blue">
+                <pts>
+                    <pt x="212" y="251" />
+                    <pt x="212" y="382" />
+                    <pt x="348" y="382" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="surface_to&#x0D;atmosphere">
+            <eqn>108*(surface_temperature/288)^4+36*surface_temperature/288</eqn>
+            <non_negative />
+            <display x="285" y="469" color="blue">
+                <pts>
+                    <pt x="374" y="395" />
+                    <pt x="374" y="469" />
+                    <pt x="196" y="469" />
+                    <pt x="196" y="251" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="solar_input">
+            <eqn>100</eqn>
+            <display x="363" y="250" color="blue" />
+        </aux>
+        <aux name="cloud_cover">
+            <eqn>0.6</eqn>
+            <display x="396" y="63" color="blue" />
+        </aux>
+        <aux name="cloud_albedo">
+            <eqn>28/60</eqn>
+            <display x="462" y="119" color="blue" />
+        </aux>
+        <aux name="reflected_insolation">
+            <eqn>solar_input*cloud_cover*cloud_albedo</eqn>
+            <display x="394" y="160" color="blue" />
+        </aux>
+        <aux name="surface_albedo">
+            <eqn>4/54</eqn>
+            <display x="463" y="222" color="blue" />
+        </aux>
+        <aux name="SW_atmosphere&#x0D;absorption">
+            <eqn>0.25</eqn>
+            <display x="305" y="290" color="blue" />
+        </aux>
+        <aux name="atmosphere&#x0D;temperature">
+            <eqn>255*atmosphere/16.5</eqn>
+            <display x="139" y="325" color="blue" />
+        </aux>
+        <aux name="atmosphere&#x0D;delta_T">
+            <eqn>atmosphere_temperature-255</eqn>
+            <display x="63" y="409" color="blue" />
+        </aux>
+        <aux name="surface_temperature">
+            <eqn>288*surface/271.2</eqn>
+            <display x="395" y="520" color="blue" />
+        </aux>
+        <aux name="surface&#x0D;delta_T">
+            <eqn>surface_temperature-288</eqn>
+            <display x="279" y="561" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" page_rows="2" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.01" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="457" y="228" uid="0" color="#FF007F">
+                <from>surface_albedo</from>
+                <to>solar_to_surface</to>
+            </connector>
+            <connector x="385" y="161" uid="1" color="#FF007F">
+                <from>reflected_insolation</from>
+                <to>solar_to_atmosphere</to>
+            </connector>
+            <connector x="454" y="123" uid="2" color="#FF007F">
+                <from>cloud_albedo</from>
+                <to>reflected_insolation</to>
+            </connector>
+            <connector x="395" y="72" uid="3" color="#FF007F">
+                <from>cloud_cover</from>
+                <to>reflected_insolation</to>
+            </connector>
+            <connector x="394" y="170" uid="4" color="#FF007F">
+                <from>reflected_insolation</from>
+                <to>solar_to_surface</to>
+            </connector>
+            <connector x="371" y="254" uid="5" color="#FF007F">
+                <from>solar_input</from>
+                <to>solar_to_surface</to>
+            </connector>
+            <connector x="354" y="248" uid="6" color="#FF007F">
+                <from>solar_input</from>
+                <to>solar_to_atmosphere</to>
+            </connector>
+            <connector x="365" y="241" uid="7" color="#FF007F">
+                <from>solar_input</from>
+                <to>reflected_insolation</to>
+            </connector>
+            <connector x="302" y="281" uid="8" color="#FF007F">
+                <from>SW_atmosphere&#x0D;absorption</from>
+                <to>solar_to_atmosphere</to>
+            </connector>
+            <connector x="313" y="287" uid="9" color="#FF007F">
+                <from>SW_atmosphere&#x0D;absorption</from>
+                <to>solar_to_surface</to>
+            </connector>
+            <connector x="138" y="316" uid="10" color="#FF007F">
+                <from>atmosphere&#x0D;temperature</from>
+                <to>atmosphere&#x0D;LW_to_space</to>
+            </connector>
+            <connector x="191" y="251" uid="11" color="#FF007F">
+                <from>atmosphere</from>
+                <to>atmosphere&#x0D;temperature</to>
+            </connector>
+            <connector x="147" y="329" uid="12" color="#FF007F">
+                <from>atmosphere&#x0D;temperature</from>
+                <to>atmosphere&#x0D;LW_to_surface</to>
+            </connector>
+            <connector x="133" y="332" uid="13" color="#FF007F">
+                <from>atmosphere&#x0D;temperature</from>
+                <to>atmosphere&#x0D;delta_T</to>
+            </connector>
+            <connector x="386" y="518" uid="14" color="#FF007F">
+                <from>surface_temperature</from>
+                <to>surface_to&#x0D;atmosphere</to>
+            </connector>
+            <connector x="378" y="395" uid="15" color="#FF007F">
+                <from>surface</from>
+                <to>surface_temperature</to>
+            </connector>
+            <connector x="399" y="513" uid="16" color="#FF007F">
+                <from>surface_temperature</from>
+                <to>surface_LW_to_space</to>
+            </connector>
+            <connector x="387" y="523" uid="17" color="#FF007F">
+                <from>surface_temperature</from>
+                <to>surface&#x0D;delta_T</to>
+            </connector>
+            <popup x="193" y="150">
+                <stacked_container visible="false" height="282" width="492" visible_index="0" uid="pad_76423202">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-789466335" time_precision="2" from="0" to="12">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="atmosphere_delta_T" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="surface_delta_T" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="182" y="93" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_76423202">
+                <label_side>bottom</label_side>
+            </pad_icon>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

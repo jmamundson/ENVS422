@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="1" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0">
+            <uses_arrays>
+                <dimensions>
+                    <dim name="Dim_Name_1" size="1" />
+                </dimensions>
+            </uses_arrays>
+        </smile>
+        <name />
+        <uuid>80d27106-5347-4151-a68e-2822a4c19650</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>1880</start>
+        <stop>2000</stop>
+        <dt>0.25</dt>
+        <method>RK4</method>
+        <time_units>Time</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1920" height="997" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="ATMOSPHERE">
+            <eqn>620 {Gt C -- 1 Gt=1e15 g -- this is the presumed 1880 pre-industrial value}</eqn>
+            <inflow>Soil_Respiration</inflow>
+            <inflow>Plant_Respiration</inflow>
+            <inflow>volcanoes</inflow>
+            <inflow>human_emissions</inflow>
+            <outflow>Photosynthesis</outflow>
+            <outflow>oc–atm_exchange</outflow>
+            <non_negative />
+            <display x="390" y="213" color="black">
+                <label_side>right</label_side>
+                <label_angle>326</label_angle>
+            </display>
+        </stock>
+        <stock name="LAND_BIOTA">
+            <eqn>610 {610 Gt C -- 1 Gt=1e15 g -- from IPCC, 1994}</eqn>
+            <inflow>Photosynthesis</inflow>
+            <outflow>Litter_fall</outflow>
+            <outflow>Plant_Respiration</outflow>
+            <non_negative />
+            <display x="211" y="351" color="black">
+                <label_side>left</label_side>
+                <label_angle>188</label_angle>
+            </display>
+        </stock>
+        <stock name="SOIL">
+            <eqn>1580</eqn>
+            <inflow>Litter_fall</inflow>
+            <outflow>Soil_Respiration</outflow>
+            <outflow>runoff</outflow>
+            <non_negative />
+            <display x="400" y="407" color="black">
+                <label_side>bottom</label_side>
+                <label_angle>267</label_angle>
+            </display>
+        </stock>
+        <flow name="Litter_fall">
+            <eqn>LAND_BIOTA*(50/610)</eqn>
+            <non_negative />
+            <display x="289" y="407" color="blue">
+                <label_angle>237</label_angle>
+                <pts>
+                    <pt x="201" y="368" />
+                    <pt x="201" y="407" />
+                    <pt x="378" y="407" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Soil_Respiration">
+            <eqn>((49.4/INIT(SOIL))*SOIL*(1+(Tsens_sr*global_temp_change)))+soil_disruption</eqn>
+            <non_negative />
+            <display x="402" y="310" color="blue">
+                <label_side>right</label_side>
+                <label_angle>335</label_angle>
+                <pts>
+                    <pt x="402" y="390" />
+                    <pt x="402" y="230" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Photosynthesis">
+            <eqn>(Pmax*(pCO2_eff/(pCO2_eff+Khs)))*(1+(Tsens_p*global_temp_change))</eqn>
+            <non_negative />
+            <display x="292" y="215" color="blue">
+                <label_angle>215</label_angle>
+                <pts>
+                    <pt x="368" y="215" />
+                    <pt x="217" y="215" />
+                    <pt x="217" y="334" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Plant_Respiration">
+            <eqn>(Photosynthesis*(50/100))+tree_burning</eqn>
+            <non_negative />
+            <display x="305" y="343" color="blue">
+                <label_side>top</label_side>
+                <pts>
+                    <pt x="233" y="343" />
+                    <pt x="377" y="343" />
+                    <pt x="377" y="230" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="runoff">
+            <eqn>SOIL*(.6/INIT(SOIL))</eqn>
+            <non_negative />
+            <display x="535" y="347" color="blue">
+                <pts>
+                    <pt x="422" y="422" />
+                    <pt x="456" y="422" />
+                    <pt x="456" y="347" />
+                    <pt x="615" y="347" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="global_temp_change">
+            <eqn>2.5*LN(pCO2_atm/290)/LN(2) {°C relative to pre-industrial temp of 14; this relationship produces a 2.5 ° warming for each doubling of pCO2}</eqn>
+            <display x="346" y="264" color="blue" />
+        </aux>
+        <aux name="Khs">
+            <eqn>72.5 {62.5 ppm gives Pmax of 125; 0 ppm gives Pmax of 100; 100 ppm gives Pmax of 140 -- the }</eqn>
+            <display x="171" y="233" color="blue">
+                <label_angle>253</label_angle>
+            </display>
+        </aux>
+        <aux name="Pmax">
+            <eqn>((Khs+260)*100)/260 { Gt C/yr; of photosynthesis, ignoring the increases due to temperature increases; 260 is the starting atm pCO2 minus the 100 is the initial photosynthesis rate}</eqn>
+            <display x="223" y="168" color="blue">
+                <label_side>left</label_side>
+                <label_angle>126</label_angle>
+            </display>
+        </aux>
+        <aux name="pCO2_atm">
+            <eqn>ATMOSPHERE*(290/620) {290 ppm is the 1880 pre-industrial level, corresponding to 620 GT C}</eqn>
+            <display x="325" y="154" color="blue">
+                <label_side>top</label_side>
+                <label_angle>73</label_angle>
+            </display>
+        </aux>
+        <aux name="K1">
+            <eqn>8.73e-7 { -- an equilibrium constant}</eqn>
+            <display x="985" y="188" color="blue" />
+        </aux>
+        <aux name="H">
+            <eqn>Kcarb*K1*HCO3/CO3</eqn>
+            <display x="935" y="224" color="blue" />
+        </aux>
+        <aux name="pCO2_eff">
+            <eqn>pCO2_atm-pCO2_min</eqn>
+            <display x="273" y="171" color="blue">
+                <label_side>top</label_side>
+                <label_angle>77</label_angle>
+            </display>
+        </aux>
+        <aux name="Tsens_p">
+            <eqn>.07 {temp sensitivity -- increase in photosynthesis per °C temp rise}</eqn>
+            <display x="134" y="180" color="blue" />
+        </aux>
+        <aux name="Tsens_sr">
+            <eqn>.01</eqn>
+            <display x="439" y="261" color="blue">
+                <label_side>right</label_side>
+                <label_angle>298</label_angle>
+            </display>
+        </aux>
+        <aux name="pCO2_min">
+            <eqn>30 {ppm -- no photosynthesis can occur below this level}</eqn>
+            <display x="243" y="111" color="blue">
+                <label_side>right</label_side>
+                <label_angle>20</label_angle>
+            </display>
+        </aux>
+        <aux name="pH">
+            <eqn>-LOG10(H)</eqn>
+            <display x="1006" y="262" color="blue" />
+        </aux>
+        <aux name="Observed_Atm_CO2">
+            <eqn>time</eqn>
+            <gf discrete="false">
+                <xpts>1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010</xpts>
+                <ypts>290,294,296,300,303,307,310,312,317,325,337,353,370,387</ypts>
+                <xscale min="1880" max="2010" />
+                <yscale min="250" max="400" />
+            </gf>
+            <display x="887" y="91" color="blue">
+                <scale min="290" max="374.60000000000002" />
+            </display>
+        </aux>
+        <aux name="land_use_changes">
+            <eqn>time</eqn>
+            <gf discrete="false">
+                <xpts>1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020,2030,2040,2050,2060,2070,2080,2090,2100,2110,2120,2130,2140,2150,2160,2170,2180</xpts>
+                <ypts>0.42499999999999999,0.45000000000000001,0.47499999999999998,0.52500000000000002,0.59999999999999998,0.75,0.90000000000000002,1.05,1.2749999999999999,1.55,2,2.4750000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001,2.8500000000000001</ypts>
+                <xscale min="1880" max="2180" />
+                <yscale min="0" max="20" />
+            </gf>
+            <display x="185" y="537" color="blue" />
+        </aux>
+        <aux name="Atmos_Change">
+            <eqn>ATMOSPHERE-INIT(ATMOSPHERE)</eqn>
+            <display x="429" y="101" color="blue">
+                <label_side>top</label_side>
+                <label_angle>37</label_angle>
+            </display>
+        </aux>
+        <aux name="Land_Biota_Change">
+            <eqn>LAND_BIOTA-INIT(LAND_BIOTA)</eqn>
+            <display x="157" y="294" color="blue">
+                <label_side>top</label_side>
+                <label_angle>157</label_angle>
+            </display>
+        </aux>
+        <aux name="Soil_Change">
+            <eqn>SOIL-1580</eqn>
+            <display x="399" y="496" color="blue" />
+        </aux>
+        <aux name="Total_Terr_Change">
+            <eqn>Atmos_Change+Land_Biota_Change+Soil_Change</eqn>
+            <display x="459" y="518" color="blue" />
+        </aux>
+        <aux name="tree_burning">
+            <eqn>land_use_changes*f_land_use*land_use_switch</eqn>
+            <display x="208" y="472" color="blue" />
+        </aux>
+        <aux name="soil_disruption">
+            <eqn>land_use_changes*(1-f_land_use)*land_use_switch</eqn>
+            <display x="303" y="523" color="blue" />
+        </aux>
+        <stock name="SURF_OCEAN">
+            <eqn>880 {Gt C}</eqn>
+            <inflow>ocean_mixing</inflow>
+            <inflow>oc–atm_exchange</inflow>
+            <inflow>runoff</inflow>
+            <outflow>Bio_Pump</outflow>
+            <non_negative />
+            <display x="637" y="340" color="black">
+                <label_side>left</label_side>
+                <label_angle>156</label_angle>
+            </display>
+        </stock>
+        <stock name="DEEP_OCEAN">
+            <eqn>38000 {Gt C}</eqn>
+            <inflow>Bio_Pump</inflow>
+            <outflow>ocean_mixing</outflow>
+            <outflow>Sedimentation</outflow>
+            <non_negative />
+            <display x="710" y="465" color="black" />
+        </stock>
+        <flow name="Bio_Pump">
+            <eqn>10</eqn>
+            <non_negative />
+            <display x="777" y="469" color="blue">
+                <pts>
+                    <pt x="659" y="345" />
+                    <pt x="823" y="345" />
+                    <pt x="823" y="469" />
+                    <pt x="732" y="469" />
+                </pts>
+            </display>
+        </flow>
+        <stock name="FOSSIL_FUELS">
+            <eqn>4200</eqn>
+            <outflow>human_emissions</outflow>
+            <non_negative />
+            <display x="494" y="132" color="blue" />
+        </stock>
+        <aux name="f_land_use">
+            <eqn>.75 { fraction of all land use related carbon changes represented by tree burning -- the remainder will be due to soil disruption}</eqn>
+            <display x="267" y="486" color="blue" />
+        </aux>
+        <aux name="Vol_surf">
+            <eqn>3.63E16 { m^3 this is the upper 100 m}</eqn>
+            <display x="871" y="325" color="blue" />
+        </aux>
+        <aux name="Surf_Ocean_Change">
+            <eqn>(SURF_OCEAN-INIT(SURF_OCEAN))</eqn>
+            <display x="780" y="373" color="blue" />
+        </aux>
+        <aux name="airborne_fraction">
+            <eqn>Atmos_Change/total_anthro_change</eqn>
+            <display x="726" y="638" color="blue" />
+        </aux>
+        <flow name="ocean_mixing">
+            <eqn>100*(DEEP_OCEAN/INIT(DEEP_OCEAN))-90.6*(SURF_OCEAN/INIT(SURF_OCEAN)) {this is upwelling minus downwelling}</eqn>
+            <display x="646" y="415" color="blue">
+                <label_side>top</label_side>
+                <label_angle>53</label_angle>
+                <pts>
+                    <pt x="690" y="462" />
+                    <pt x="667" y="462" />
+                    <pt x="667" y="415" />
+                    <pt x="626" y="415" />
+                    <pt x="626" y="355" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="k_ao">
+            <eqn>.278 {Gt C/yr/ppm -- the observationally-derived rate constant}</eqn>
+            <display x="654" y="198" color="blue" />
+        </aux>
+        <aux name="T_surf">
+            <eqn>288+global_temp_change{°K}</eqn>
+            <display x="795" y="172" color="blue" />
+        </aux>
+        <aux name="KCO2">
+            <eqn>.035+.0019*(T_surf-278) {Walker and Kasting}</eqn>
+            <display x="735" y="174" color="blue" />
+        </aux>
+        <aux name="Kcarb">
+            <eqn>.000575+.000006*(T_surf-278) {Walker and Kasting}</eqn>
+            <display x="850" y="178" color="blue">
+                <label_side>top</label_side>
+                <label_angle>47</label_angle>
+            </display>
+        </aux>
+        <aux name="HCO3">
+            <eqn>(Surf_C_conc-SQRT(Surf_C_conc^2-Alk_Surf*(2*Surf_C_conc-Alk_Surf)*(1-4*Kcarb)))/(1-4*Kcarb)&#x0D;{Walker and Kasting}</eqn>
+            <display x="839" y="230" color="blue">
+                <label_side>right</label_side>
+                <label_angle>306</label_angle>
+            </display>
+        </aux>
+        <aux name="CO3">
+            <eqn>(Alk_Surf-HCO3)/2</eqn>
+            <display x="907" y="269" color="blue">
+                <label_side>right</label_side>
+                <label_angle>288</label_angle>
+            </display>
+        </aux>
+        <aux name="pCO2_Oc">
+            <eqn>290*KCO2*(HCO3^2/CO3) {290 is the presumed starting atmospheric concentration}</eqn>
+            <display x="704" y="223" color="blue" />
+        </aux>
+        <flow name="Sedimentation">
+            <eqn>0.6*(Bio_Pump/10)</eqn>
+            <non_negative />
+            <display x="706" y="514" color="blue">
+                <label_side>left</label_side>
+                <label_angle>183</label_angle>
+                <pts>
+                    <pt x="706" y="480" />
+                    <pt x="706" y="549" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Surf_C_conc">
+            <eqn>(SURF_OCEAN*8.33E13)/Vol_surf { moles/m^3}</eqn>
+            <display x="817" y="314" color="blue" />
+        </aux>
+        <aux name="Alk_Surf">
+            <eqn>2.1879</eqn>
+            <display x="785" y="274" color="blue" />
+        </aux>
+        <aux name="Deep_Ocean_Change">
+            <eqn>(DEEP_OCEAN-INIT(DEEP_OCEAN))</eqn>
+            <display x="796" y="525" color="blue" />
+        </aux>
+        <aux name="ffb">
+            <eqn>time</eqn>
+            <gf discrete="false">
+                <xpts>1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020,2030,2040,2050,2060,2070,2080,2090,2100,2110,2120,2130,2140,2150,2160,2170,2180</xpts>
+                <ypts>0.20000000000000001,0.34999999999999998,0.5,0.80000000000000004,0.90000000000000002,1,1.3,1.6000000000000001,2.6000000000000001,4.0999999999999996,5.2999999999999998,6.0999999999999996,6.7000000000000002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</ypts>
+                <xscale min="1880" max="2180" />
+                <yscale min="0" max="50" />
+            </gf>
+            <display x="540" y="160" color="blue" />
+        </aux>
+        <stock name="total_anthro_change">
+            <eqn>1e-06</eqn>
+            <inflow>addition</inflow>
+            <non_negative />
+            <display x="628" y="651" color="blue" />
+        </stock>
+        <flow name="oc–atm_exchange">
+            <eqn>k_ao*(pCO2_atm-pCO2_Oc)</eqn>
+            <display x="543" y="238" color="blue">
+                <pts>
+                    <pt x="412" y="212" />
+                    <pt x="488" y="212" />
+                    <pt x="488" y="238" />
+                    <pt x="599" y="238" />
+                    <pt x="599" y="279" />
+                    <pt x="640" y="279" />
+                    <pt x="640" y="323" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="addition">
+            <eqn>ffb+land_use_changes</eqn>
+            <non_negative />
+            <display x="566" y="650" color="blue">
+                <pts>
+                    <pt x="527" y="650" />
+                    <pt x="606" y="650" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Total_Change">
+            <eqn>Total_Terr_Change+Total_Ocean_Change</eqn>
+            <display x="948" y="422" color="blue">
+                <label_side>right</label_side>
+                <label_angle>8</label_angle>
+            </display>
+        </aux>
+        <aux name="ffb_switch">
+            <eqn>0</eqn>
+            <display x="447" y="127" color="blue" />
+        </aux>
+        <aux name="land_use_switch">
+            <eqn>0</eqn>
+            <display x="249" y="555" color="blue" />
+        </aux>
+        <flow name="volcanoes">
+            <eqn>0.6</eqn>
+            <non_negative />
+            <display x="387" y="144" color="blue">
+                <pts>
+                    <pt x="387" y="93" />
+                    <pt x="387" y="196" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="human_emissions">
+            <eqn>ffb*ffb_switch</eqn>
+            <non_negative />
+            <display x="453" y="200" color="blue">
+                <label_side>top</label_side>
+                <label_angle>115</label_angle>
+                <pts>
+                    <pt x="494" y="149" />
+                    <pt x="494" y="200" />
+                    <pt x="412" y="200" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Total_Ocean_Change">
+            <eqn>Surf_Ocean_Change+Deep_Ocean_Change</eqn>
+            <display x="864" y="499" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" pages_row_count="2" pages_column_count="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" report_interval="0.25" report_every_dt="true" scroll_x="0" scroll_y="40">
+            <alias x="967" y="474" uid="0">
+                <of>Total_Terr_Change</of>
+            </alias>
+            <alias x="470" y="475" uid="1">
+                <of>Atmos_Change</of>
+            </alias>
+            <alias x="545" y="489" uid="2">
+                <of>Land_Biota_Change</of>
+            </alias>
+            <alias x="536" y="598" uid="3">
+                <of>ffb</of>
+            </alias>
+            <alias x="986" y="373" uid="4">
+                <of>Total_Ocean_Change</of>
+            </alias>
+            <alias x="782" y="121" uid="5">
+                <of>global_temp_change</of>
+            </alias>
+            <alias x="605" y="581" uid="6">
+                <of>land_use_changes</of>
+            </alias>
+            <alias x="796" y="618" uid="7">
+                <of>Atmos_Change</of>
+            </alias>
+            <alias x="573" y="188" uid="8">
+                <of>pCO2_atm</of>
+            </alias>
+            <connector x="355" y="264" uid="9">
+                <from>global_temp_change</from>
+                <to>Soil_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="423" y="405" uid="10">
+                <from>SOIL</from>
+                <to>runoff</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="413" y="391" uid="11">
+                <from>SOIL</from>
+                <to>Soil_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="231" y="172" uid="12">
+                <from>Pmax</from>
+                <to>Photosynthesis</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="339" y="258" uid="13">
+                <from>global_temp_change</from>
+                <to>Photosynthesis</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="293" y="224" uid="14">
+                <from>Photosynthesis</from>
+                <to>Plant_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="233" y="364" uid="15">
+                <from>LAND_BIOTA</from>
+                <to>Litter_fall</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="367" y="202" uid="16">
+                <from>ATMOSPHERE</from>
+                <to>pCO2_atm</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="979" y="195" uid="17">
+                <from>K1</from>
+                <to>H</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="180" y="232" uid="18">
+                <from>Khs</from>
+                <to>Photosynthesis</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="174" y="226" uid="19">
+                <from>Khs</from>
+                <to>Pmax</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="143" y="182" uid="20">
+                <from>Tsens_p</from>
+                <to>Photosynthesis</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="438" y="270" uid="21">
+                <from>Tsens_sr</from>
+                <to>Soil_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="327" y="163" uid="22">
+                <from>pCO2_atm</from>
+                <to>global_temp_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="243" y="120" uid="23">
+                <from>pCO2_min</from>
+                <to>pCO2_eff</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="316" y="157" uid="24">
+                <from>pCO2_atm</from>
+                <to>pCO2_eff</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="277" y="179" uid="25">
+                <from>pCO2_eff</from>
+                <to>Photosynthesis</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="390" y="196" uid="26">
+                <from>ATMOSPHERE</from>
+                <to>Atmos_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="383" y="424" uid="27">
+                <from>SOIL</from>
+                <to>Soil_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="196" y="334" uid="28">
+                <from>LAND_BIOTA</from>
+                <to>Land_Biota_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="407" y="499" uid="29">
+                <from>Soil_Change</from>
+                <to>Total_Terr_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="468" y="484" uid="30">
+                <from>
+                    <alias uid="1" />
+                </from>
+                <to>Total_Terr_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="536" y="492" uid="31">
+                <from>
+                    <alias uid="2" />
+                </from>
+                <to>Total_Terr_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="769" y="474" uid="32">
+                <from>Bio_Pump</from>
+                <to>Sedimentation</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="977" y="373" uid="33">
+                <from>
+                    <alias uid="4" />
+                </from>
+                <to>Total_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="820" y="305" uid="34">
+                <from>Surf_C_conc</from>
+                <to>HCO3</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="864" y="320" uid="35">
+                <from>Vol_surf</from>
+                <to>Surf_C_conc</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="659" y="335" uid="36">
+                <from>SURF_OCEAN</from>
+                <to>Surf_C_conc</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="180" y="530" uid="37">
+                <from>land_use_changes</from>
+                <to>tree_burning</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="646" y="201" uid="38">
+                <from>k_ao</from>
+                <to>oc–atm_exchange</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="698" y="228" uid="39">
+                <from>pCO2_Oc</from>
+                <to>oc–atm_exchange</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="659" y="349" uid="40">
+                <from>SURF_OCEAN</from>
+                <to>Surf_Ocean_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="194" y="536" uid="41">
+                <from>land_use_changes</from>
+                <to>soil_disruption</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="943" y="229" uid="42">
+                <from>H</from>
+                <to>pH</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="617" y="357" uid="43">
+                <from>SURF_OCEAN</from>
+                <to>ocean_mixing</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="802" y="167" uid="44">
+                <from>T_surf</from>
+                <to>Kcarb</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="786" y="170" uid="45">
+                <from>T_surf</from>
+                <to>KCO2</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="846" y="186" uid="46">
+                <from>Kcarb</from>
+                <to>HCO3</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="849" y="232" uid="47">
+                <from>HCO3</from>
+                <to>CO3</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="727" y="179" uid="48">
+                <from>KCO2</from>
+                <to>pCO2_Oc</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="830" y="227" uid="49">
+                <from>HCO3</from>
+                <to>pCO2_Oc</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="898" y="269" uid="50">
+                <from>CO3</from>
+                <to>pCO2_Oc</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="688" y="455" uid="51">
+                <from>DEEP_OCEAN</from>
+                <to>ocean_mixing</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="794" y="276" uid="52">
+                <from>Alk_Surf</from>
+                <to>CO3</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="792" y="268" uid="53">
+                <from>Alk_Surf</from>
+                <to>HCO3</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="786" y="129" uid="54">
+                <from>
+                    <alias uid="5" />
+                </from>
+                <to>T_surf</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="959" y="469" uid="55">
+                <from>
+                    <alias uid="0" />
+                </from>
+                <to>Total_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="732" y="481" uid="56">
+                <from>DEEP_OCEAN</from>
+                <to>Deep_Ocean_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="541" y="606" uid="57">
+                <from>
+                    <alias uid="3" />
+                </from>
+                <to>addition</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="531" y="162" uid="58">
+                <from>ffb</from>
+                <to>human_emissions</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="601" y="589" uid="59">
+                <from>
+                    <alias uid="6" />
+                </from>
+                <to>addition</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="650" y="649" uid="60">
+                <from>total_anthro_change</from>
+                <to>airborne_fraction</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="788" y="622" uid="61">
+                <from>
+                    <alias uid="7" />
+                </from>
+                <to>airborne_fraction</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="210" y="464" uid="62">
+                <from>tree_burning</from>
+                <to>Plant_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="258" y="484" uid="63">
+                <from>f_land_use</from>
+                <to>tree_burning</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="276" y="490" uid="64">
+                <from>f_land_use</from>
+                <to>soil_disruption</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="306" y="514" uid="65">
+                <from>soil_disruption</from>
+                <to>Soil_Respiration</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="859" y="178" uid="66">
+                <from>Kcarb</from>
+                <to>H</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="847" y="225" uid="67">
+                <from>HCO3</from>
+                <to>H</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="913" y="262" uid="68">
+                <from>CO3</from>
+                <to>H</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="447" y="136" uid="69">
+                <from>ffb_switch</from>
+                <to>human_emissions</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="788" y="378" uid="70">
+                <from>Surf_Ocean_Change</from>
+                <to>Total_Ocean_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="804" y="522" uid="71">
+                <from>Deep_Ocean_Change</from>
+                <to>Total_Ocean_Change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="255" y="549" uid="72">
+                <from>land_use_switch</from>
+                <to>soil_disruption</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="247" y="546" uid="73">
+                <from>land_use_switch</from>
+                <to>tree_burning</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="565" y="192" uid="74">
+                <from>
+                    <alias uid="8" />
+                </from>
+                <to>oc–atm_exchange</to>
+                <color>#FF007F</color>
+            </connector>
+            <popup x="766" y="383">
+                <stacked_container visible="false" height="282" width="492" visible_index="0" uid="pad_121623356">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-658351977" time_precision="2" from="1880" to="2000">
+                        <plot pen_width="1" precision="3">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="290" max="370" />
+                            <entity name="pCO2_atm" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="290" max="370" />
+                            <entity name="Observed_Atm_CO2" />
+                        </plot>
+                        <plot pen_width="1" precision="3">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="airborne_fraction" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>3</index>
+                            <color>#008F44</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="pH" />
+                        </plot>
+                    </graph>
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-658351977" time_precision="2" from="1880" to="2000">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="ATMOSPHERE" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="LAND_BIOTA" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="SOIL" />
+                        </plot>
+                    </graph>
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-658351977" time_precision="2" from="1880" to="2000">
+                        <plot pen_width="1" precision="3">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="SURF_OCEAN" />
+                        </plot>
+                        <plot pen_width="1" precision="3">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="DEEP_OCEAN" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="941" y="608" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_121623356">
+                <label_side>bottom</label_side>
+            </pad_icon>
+            <popup x="521" y="302">
+                <stacked_container visible="false" height="282" width="492" visible_index="0" uid="pad_124440908">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-658351977" time_precision="2" from="1880" to="2000">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="human_emissions" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="ffb" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="2" />
+                            <entity name="ffb_switch" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="83" y="98" width="26" height="22" color="#008F44" label="Graph 2" type="graph" icon_of="pad_124440908">
+                <label_side>bottom</label_side>
+            </pad_icon>
+            <text_box x="165" y="600" uid="75" color="black" font-family="Arial" font-size="9" margin="5" border-style="solid" border-width="thin" width="260" height="58" appearance="transparent">land use changes represents the combined effects of soil disruption, deforestation, etc. for the last 100 years, extrapolated into the future another 200 years at the year 2000 level</text_box>
+            <text_box x="465" y="683" uid="76" color="black" font-family="Arial" font-size="9" margin="5" border-style="solid" border-width="thin" width="231" height="48" appearance="transparent">this sums up the anthropogenic carbon emissions -- largely fossil fuel burning</text_box>
+        </display>
+        <interface scroll_x="8" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="2" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

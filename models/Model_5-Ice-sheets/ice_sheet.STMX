@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="1" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0">
+            <uses_arrays>
+                <dimensions>
+                    <dim name="Dim_Name_1" size="1" />
+                </dimensions>
+            </uses_arrays>
+        </smile>
+        <name>ice_sheet_2</name>
+        <uuid>91ac722f-43f4-4258-a837-976446200f78</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0" lang="en">iThink</product>
+    </header>
+    <isee:sensi_specs runs="3" run="false">
+        <isee:variable name="slope" type="incremental" min="0.001" max="0.003" />
+    </isee:sensi_specs>
+    <style>
+        <model font-size="12" />
+    </style>
+    <sim_specs>
+        <start>-300000</start>
+        <stop>0</stop>
+        <dt>200</dt>
+        <method>RK4</method>
+        <time_units>Years</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1280" height="941" />
+        <isee:security />
+        <isee:print_setup width="612" height="792" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <aux name="seed_area">
+            <eqn>IF Length=0 AND grounding_line&gt;0 THEN grounding_line ELSE 0 {the ice sheet should have some initial length...}</eqn>
+            <display x="366" y="345" color="blue" />
+        </aux>
+        <aux name="SPECMAP">
+            <eqn>time</eqn>
+            <gf discrete="false">
+                <xpts>-300000,-299000,-298000,-297000,-296000,-295000,-294000,-293000,-292000,-291000,-290000,-289000,-288000,-287000,-286000,-285000,-284000,-283000,-282000,-281000,-280000,-279000,-278000,-277000,-276000,-275000,-274000,-273000,-272000,-271000,-270000,-269000,-268000,-267000,-266000,-265000,-264000,-263000,-262000,-261000,-260000,-259000,-258000,-257000,-256000,-255000,-254000,-253000,-252000,-251000,-250000,-249000,-248000,-247000,-246000,-245000,-244000,-243000,-242000,-241000,-240000,-239000,-238000,-237000,-236000,-235000,-234000,-233000,-232000,-231000,-230000,-229000,-228000,-227000,-226000,-225000,-224000,-223000,-222000,-221000,-220000,-219000,-218000,-217000,-216000,-215000,-214000,-213000,-212000,-211000,-210000,-209000,-208000,-207000,-206000,-205000,-204000,-203000,-202000,-201000,-200000,-199000,-198000,-197000,-196000,-195000,-194000,-193000,-192000,-191000,-190000,-189000,-188000,-187000,-186000,-185000,-184000,-183000,-182000,-181000,-180000,-179000,-178000,-177000,-176000,-175000,-174000,-173000,-172000,-171000,-170000,-169000,-168000,-167000,-166000,-165000,-164000,-163000,-162000,-161000,-160000,-159000,-158000,-157000,-156000,-155000,-154000,-153000,-152000,-151000,-150000,-149000,-148000,-147000,-146000,-145000,-144000,-143000,-142000,-141000,-140000,-139000,-138000,-137000,-136000,-135000,-134000,-133000,-132000,-131000,-130000,-129000,-128000,-127000,-126000,-125000,-124000,-123000,-122000,-121000,-120000,-119000,-118000,-117000,-116000,-115000,-114000,-113000,-112000,-111000,-110000,-109000,-108000,-107000,-106000,-105000,-104000,-103000,-102000,-101000,-100000,-99000,-98000,-97000,-96000,-95000,-94000,-93000,-92000,-91000,-90000,-89000,-88000,-87000,-86000,-85000,-84000,-83000,-82000,-81000,-80000,-79000,-78000,-77000,-76000,-75000,-74000,-73000,-72000,-71000,-70000,-69000,-68000,-67000,-66000,-65000,-64000,-63000,-62000,-61000,-60000,-59000,-58000,-57000,-56000,-55000,-54000,-53000,-52000,-51000,-50000,-49000,-48000,-47000,-46000,-45000,-44000,-43000,-42000,-41000,-40000,-39000,-38000,-37000,-36000,-35000,-34000,-33000,-32000,-31000,-30000,-29000,-28000,-27000,-26000,-25000,-24000,-23000,-22000,-21000,-20000,-19000,-18000,-17000,-16000,-15000,-14000,-13000,-12000,-11000,-10000,-9000,-8000,-7000,-6000,-5000,-4000,-3000,-2000,-1000,0</xpts>
+                <ypts>-0.0385,0.033000000000000002,0.062600000000000003,0.060100000000000001,0.038600000000000002,0.0080999999999999996,-0.0293,-0.074800000000000005,-0.1333,-0.20380000000000001,-0.28420000000000001,-0.36570000000000003,-0.42620000000000002,-0.45069999999999999,-0.43209999999999998,-0.3836,-0.31909999999999999,-0.2445,-0.16200000000000001,-0.071499999999999994,0.025000000000000001,0.12959999999999999,0.24010000000000001,0.35060000000000002,0.4521,0.54469999999999996,0.63319999999999999,0.71970000000000001,0.80320000000000003,0.87380000000000002,0.91830000000000001,0.91979999999999995,0.87529999999999997,0.79990000000000006,0.71740000000000004,0.64790000000000003,0.59850000000000003,0.56399999999999995,0.53549999999999998,0.505,0.46960000000000002,0.43609999999999999,0.41460000000000002,0.41610000000000003,0.44669999999999999,0.50119999999999998,0.56769999999999998,0.63719999999999999,0.70479999999999998,0.76829999999999998,0.81179999999999997,0.80530000000000002,0.72389999999999999,0.56340000000000001,0.34589999999999999,0.10150000000000001,-0.14499999999999999,-0.3795,-0.59899999999999998,-0.8004,-0.96689999999999998,-1.0764,-1.1079000000000001,-1.0623,-0.95279999999999998,-0.79930000000000001,-0.62080000000000002,-0.43619999999999998,-0.25969999999999999,-0.1032,0.028299999999999999,0.12189999999999999,0.15640000000000001,0.1179,0.021499999999999998,-0.108,-0.2515,-0.40999999999999998,-0.58340000000000003,-0.76490000000000002,-0.93740000000000001,-1.0849,-1.2002999999999999,-1.2798,-1.3212999999999999,-1.3188,-1.2811999999999999,-1.2266999999999999,-1.1672,-1.1087,-1.0481,-0.98760000000000003,-0.92610000000000003,-0.86850000000000005,-0.82099999999999995,-0.80049999999999999,-0.81299999999999994,-0.85840000000000005,-0.92390000000000005,-1.0044,-1.0999000000000001,-1.2122999999999999,-1.3368,-1.4522999999999999,-1.5347999999999999,-1.5622,-1.5197000000000001,-1.4021999999999999,-1.2257,-1.0181,-0.79959999999999998,-0.57509999999999994,-0.33750000000000002,-0.082000000000000003,0.1885,0.45600000000000002,0.68359999999999999,0.83509999999999995,0.89059999999999995,0.86409999999999998,0.78369999999999995,0.67420000000000002,0.55669999999999997,0.44719999999999999,0.36080000000000001,0.30230000000000001,0.26279999999999998,0.23230000000000001,0.2099,0.19839999999999999,0.2019,0.21740000000000001,0.24399999999999999,0.28649999999999998,0.34499999999999997,0.41560000000000002,0.49609999999999999,0.58960000000000001,0.70009999999999994,0.81969999999999998,0.94020000000000004,1.0557000000000001,1.1701999999999999,1.2838000000000001,1.3883000000000001,1.4738,1.5452999999999999,1.6109,1.6654,1.6859,1.6594,1.5940000000000001,1.5105,1.429,1.3706,1.3491,1.3646,1.3980999999999999,1.4267000000000001,1.4352,1.4207000000000001,1.3982000000000001,1.3928,1.4162999999999999,1.4508000000000001,1.4602999999999999,1.4178999999999999,1.3144,1.1438999999999999,0.90539999999999998,0.60299999999999998,0.2445,-0.16500000000000001,-0.61339999999999995,-1.0619000000000001,-1.4543999999999999,-1.7459,-1.9193,-1.9847999999999999,-1.9573,-1.8608,-1.7332000000000001,-1.6136999999999999,-1.5102,-1.3996999999999999,-1.2541,-1.0636000000000001,-0.84209999999999996,-0.62960000000000005,-0.47299999999999998,-0.39450000000000002,-0.376,-0.38940000000000002,-0.4219,-0.46939999999999998,-0.51990000000000003,-0.56530000000000002,-0.61480000000000001,-0.68230000000000002,-0.75880000000000003,-0.81620000000000004,-0.82269999999999999,-0.78220000000000001,-0.72470000000000001,-0.67810000000000004,-0.63460000000000005,-0.57010000000000005,-0.48459999999999998,-0.40400000000000003,-0.35249999999999998,-0.33400000000000002,-0.33439999999999998,-0.33789999999999998,-0.33139999999999997,-0.31790000000000002,-0.31630000000000003,-0.36180000000000001,-0.4753,-0.62880000000000003,-0.76119999999999999,-0.82469999999999999,-0.81020000000000003,-0.74270000000000003,-0.65110000000000001,-0.55959999999999999,-0.47310000000000002,-0.37959999999999999,-0.25600000000000001,-0.086499999999999994,0.125,0.36059999999999998,0.59109999999999996,0.79259999999999997,0.95109999999999995,1.0627,1.1232,1.1327,1.0962000000000001,1.0258,0.93230000000000002,0.82979999999999998,0.73329999999999995,0.65390000000000004,0.59740000000000004,0.56189999999999996,0.53739999999999999,0.52000000000000002,0.51749999999999996,0.54300000000000004,0.59160000000000001,0.6431,0.68259999999999998,0.70809999999999995,0.72770000000000001,0.75019999999999998,0.78469999999999995,0.83020000000000005,0.87880000000000003,0.92330000000000001,0.96579999999999999,1.0093000000000001,1.0559000000000001,1.0953999999999999,1.1178999999999999,1.1214,1.1140000000000001,1.1065,1.1040000000000001,1.1075999999999999,1.1161000000000001,1.1295999999999999,1.1520999999999999,1.1887000000000001,1.2412000000000001,1.3137000000000001,1.4152,1.5448,1.6822999999999999,1.8028,1.8893,1.9459,1.9743999999999999,1.9639,1.8884000000000001,1.7270000000000001,1.4815,1.1739999999999999,0.8276,0.46010000000000001,0.089599999999999999,-0.26090000000000002,-0.57330000000000003,-0.84179999999999999,-1.0723,-1.2698,-1.6062000000000001,-1.5617000000000001,-1.5871999999999999,-1.7317,-1.8581000000000001,-1.9096</ypts>
+                <xscale min="-300000" max="0" />
+                <yscale min="1" max="2" />
+            </gf>
+            <display x="523" y="347" color="blue" />
+        </aux>
+        <aux name="slope">
+            <eqn>0.002 {slope of snowline curve}</eqn>
+            <display x="209" y="46" color="blue">
+                <label_side>right</label_side>
+            </display>
+        </aux>
+        <aux name="lambda">
+            <doc>this is 4/3*tau/rho*g -- tau is the basal shear stress needed for ice to flow, rho is the ice density and g is gravity -- from Weertman, 1976.  A larger lambda means stronger ice, which requires a steeper slope to flow.</doc>
+            <eqn>14  {m this s 4/3*tau/rho*g -- tau is the basal shear stress needed for ice to flow; higher values = more stiff}</eqn>
+            <display x="65" y="119" color="blue">
+                <label_side>top</label_side>
+                <label_angle>81</label_angle>
+            </display>
+        </aux>
+        <aux name="accumulation_rate">
+            <doc>the units here are in meters/yr</doc>
+            <eqn>1.2 {accumulation rate m/yr; using constant value for entire accumulation area}</eqn>
+            <display x="539" y="186" color="blue">
+                <label_side>right</label_side>
+                <label_angle>302</label_angle>
+            </display>
+        </aux>
+        <aux name="ablation_rate">
+            <eqn>accumulation_rate/epsilon {m/yr ablation rate; setting equal to some factor of the accumulation rate}</eqn>
+            <display x="506" y="115" color="blue">
+                <label_side>top</label_side>
+                <label_angle>77</label_angle>
+            </display>
+        </aux>
+        <aux name="dQ">
+            <eqn>if Milank_switch=1 then Qt-Q0 else 0 {difference in insolation from the initial value; no change if Milankovitch cycles are turned off}</eqn>
+            <display x="246" y="394" color="blue" />
+        </aux>
+        <aux name="Qt">
+            <eqn>time</eqn>
+            <gf discrete="false">
+                <xpts>-300000,-299000,-298000,-297000,-296000,-295000,-294000,-293000,-292000,-291000,-290000,-289000,-288000,-287000,-286000,-285000,-284000,-283000,-282000,-281000,-280000,-279000,-278000,-277000,-276000,-275000,-274000,-273000,-272000,-271000,-270000,-269000,-268000,-267000,-266000,-265000,-264000,-263000,-262000,-261000,-260000,-259000,-258000,-257000,-256000,-255000,-254000,-253000,-252000,-251000,-250000,-249000,-248000,-247000,-246000,-245000,-244000,-243000,-242000,-241000,-240000,-239000,-238000,-237000,-236000,-235000,-234000,-233000,-232000,-231000,-230000,-229000,-228000,-227000,-226000,-225000,-224000,-223000,-222000,-221000,-220000,-219000,-218000,-217000,-216000,-215000,-214000,-213000,-212000,-211000,-210000,-209000,-208000,-207000,-206000,-205000,-204000,-203000,-202000,-201000,-200000,-199000,-198000,-197000,-196000,-195000,-194000,-193000,-192000,-191000,-190000,-189000,-188000,-187000,-186000,-185000,-184000,-183000,-182000,-181000,-180000,-179000,-178000,-177000,-176000,-175000,-174000,-173000,-172000,-171000,-170000,-169000,-168000,-167000,-166000,-165000,-164000,-163000,-162000,-161000,-160000,-159000,-158000,-157000,-156000,-155000,-154000,-153000,-152000,-151000,-150000,-149000,-148000,-147000,-146000,-145000,-144000,-143000,-142000,-141000,-140000,-139000,-138000,-137000,-136000,-135000,-134000,-133000,-132000,-131000,-130000,-129000,-128000,-127000,-126000,-125000,-124000,-123000,-122000,-121000,-120000,-119000,-118000,-117000,-116000,-115000,-114000,-113000,-112000,-111000,-110000,-109000,-108000,-107000,-106000,-105000,-104000,-103000,-102000,-101000,-100000,-99000,-98000,-97000,-96000,-95000,-94000,-93000,-92000,-91000,-90000,-89000,-88000,-87000,-86000,-85000,-84000,-83000,-82000,-81000,-80000,-79000,-78000,-77000,-76000,-75000,-74000,-73000,-72000,-71000,-70000,-69000,-68000,-67000,-66000,-65000,-64000,-63000,-62000,-61000,-60000,-59000,-58000,-57000,-56000,-55000,-54000,-53000,-52000,-51000,-50000,-49000,-48000,-47000,-46000,-45000,-44000,-43000,-42000,-41000,-40000,-39000,-38000,-37000,-36000,-35000,-34000,-33000,-32000,-31000,-30000,-29000,-28000,-27000,-26000,-25000,-24000,-23000,-22000,-21000,-20000,-19000,-18000,-17000,-16000,-15000,-14000,-13000,-12000,-11000,-10000,-9000,-8000,-7000,-6000,-5000,-4000,-3000,-2000,-1000,0</xpts>
+                <ypts>474.03609999999998,481.93079999999998,491.22550000000001,501.1662,511.01600000000002,519.96180000000004,527.31230000000005,532.48919999999998,535.11180000000002,535.02940000000001,532.33339999999998,527.29039999999998,520.38810000000001,512.23310000000004,503.44589999999999,494.6902,486.5446,479.5068,473.90649999999999,469.98259999999999,467.8218,467.36200000000002,468.45440000000002,470.88310000000001,474.37,478.60329999999999,483.27330000000001,488.12299999999999,492.89870000000002,497.38670000000002,501.4468,504.93189999999998,507.76029999999997,509.84730000000002,511.11360000000002,511.49000000000001,510.96030000000002,509.4871,507.1164,503.93950000000001,500.10989999999998,495.84379999999999,491.43810000000002,487.21300000000002,483.5643,480.84089999999998,479.37689999999998,479.46699999999998,481.26440000000002,484.83629999999999,490.09019999999998,496.79430000000002,504.52730000000003,512.73099999999999,520.7287,527.75530000000003,533.07090000000005,535.9502,535.87360000000001,532.55340000000001,525.97500000000002,516.47109999999998,504.6601,491.4239,477.83069999999998,464.98770000000002,453.97190000000001,445.7011,440.88940000000002,440.01369999999997,443.20780000000002,450.3381,460.95119999999997,474.30349999999999,489.43939999999998,505.18970000000002,520.3143,533.62480000000005,544.04300000000001,550.78949999999998,553.38409999999999,551.75739999999996,546.17250000000001,537.26350000000002,525.8963,513.10810000000004,499.96559999999999,487.51780000000002,476.68970000000002,468.23520000000002,462.71350000000001,460.44040000000001,461.52170000000001,465.82060000000001,472.9699,482.40120000000002,493.33859999999999,504.8777,516.00810000000001,525.71969999999999,533.09849999999994,537.40819999999997,538.18820000000005,535.30319999999995,528.97299999999996,519.72450000000003,508.36160000000001,495.85359999999997,483.2407,471.5215,461.5915,454.16820000000001,449.75650000000002,448.60649999999998,450.74599999999998,455.99799999999999,463.94740000000002,474.00959999999998,485.43439999999998,497.42590000000001,509.10820000000001,519.68449999999996,528.42639999999994,534.78229999999996,538.42250000000001,539.25160000000005,537.35619999999994,533.0575,526.82740000000001,519.24570000000006,510.89249999999998,502.39510000000001,494.279,487.01909999999998,480.9776,476.40269999999998,473.44510000000002,472.13389999999998,472.4436,474.21429999999998,477.2921,481.40260000000001,486.28370000000001,491.61750000000001,497.07100000000003,502.31079999999997,506.99790000000002,510.8014,513.4665,514.74519999999995,514.49649999999997,512.6454,509.25009999999997,504.48200000000003,498.6105,492.03210000000001,485.20479999999998,478.64350000000002,472.88690000000003,468.42529999999999,465.70690000000002,465.07549999999998,466.73289999999997,470.77420000000001,477.08150000000001,485.42020000000002,495.32940000000002,506.19999999999999,517.32870000000003,527.85180000000003,536.91269999999997,543.72109999999998,547.57730000000004,548.01149999999996,544.82360000000006,538.12969999999996,528.34169999999995,516.16669999999999,502.541,488.4821,475.09829999999999,463.38900000000001,454.22829999999999,448.28500000000003,445.97789999999998,447.44760000000002,452.5333,460.82569999999998,471.6311,484.03500000000003,496.9751,509.33640000000003,520.07259999999997,528.27009999999996,533.29790000000003,534.86329999999998,532.99710000000005,528.08680000000004,520.74530000000004,511.7946,502.13799999999998,492.66750000000002,484.16500000000002,477.3288,472.61329999999998,470.34800000000001,470.60169999999999,473.315,478.1986,484.85809999999998,492.74680000000001,501.22570000000002,509.62090000000001,517.24990000000003,523.50909999999999,527.8886,530.03920000000005,529.76969999999994,527.10730000000001,522.2681,515.60090000000002,507.6293,498.92540000000002,490.10910000000001,481.74959999999999,474.399,468.48180000000002,464.31490000000002,462.07819999999998,461.8424,463.51499999999999,466.89319999999998,471.6823,477.4948,483.9239,490.50119999999998,496.82350000000002,502.50779999999997,507.26499999999999,510.88670000000002,513.28449999999998,514.4479,514.48329999999999,513.52719999999999,511.79989999999998,509.505,506.89769999999999,504.17590000000001,501.52879999999999,499.09629999999999,497.01029999999997,495.3254,494.0822,493.3098,492.9984,493.11750000000001,493.6275,494.49189999999999,495.64690000000002,497.00749999999999,498.50049999999999,500.00040000000001,501.37560000000002,502.48090000000002,503.16550000000001,503.2627,502.64229999999998,501.20510000000002,498.90600000000001,495.7937,491.97879999999998,487.69290000000001,483.20589999999999,478.86349999999999,475.05040000000002,472.11660000000001,470.39879999999999,470.12740000000002,471.4658,474.43470000000002,478.93060000000003,484.74130000000002,491.50760000000002,498.78769999999997,506.09469999999999,512.86980000000005,518.62509999999997,522.91539999999998,525.42579999999998,525.97950000000003,524.54999999999995,521.31640000000004,516.572,510.7704,504.39449999999999,497.97890000000001,492.03919999999999,487.02210000000002,483.25619999999998,480.95580000000001,480.18540000000002</ypts>
+                <xscale min="-300000" max="0" />
+                <yscale min="440" max="560" />
+            </gf>
+            <display x="336" y="394" color="blue" />
+        </aux>
+        <aux name="Q0">
+            <eqn>497  {W/m2; mean insolation at 55°N}</eqn>
+            <display x="221" y="453" color="blue" />
+        </aux>
+        <aux name="snow_line_position">
+            <eqn>IF grounding_line&gt;Length THEN grounding_line ELSE (-B+sqrt(B^2-4*A*C))/(2*A)&#x0A;  {the x position of the snow line on the glacier}</eqn>
+            <display x="230" y="119" color="blue">
+                <label_side>right</label_side>
+                <label_angle>16</label_angle>
+                <scale min="-325300" max="2047000" />
+                <format precision="0" />
+            </display>
+        </aux>
+        <aux name="dxdQ">
+            <eqn>1.77e4  {change in grounding line (m) per W/m2 -- from Weertman}</eqn>
+            <display x="187" y="394" color="blue" />
+        </aux>
+        <aux name="A">
+            <eqn>slope^2 {used for finding the intersection of snowline and glacier surface}</eqn>
+            <display x="132" y="58" color="blue">
+                <label_side>right</label_side>
+                <label_angle>325</label_angle>
+            </display>
+        </aux>
+        <aux name="B">
+            <eqn>lambda-2*A*grounding_line {used for finding the intersection of snowline and glacier surface}</eqn>
+            <display x="119" y="201" color="blue">
+                <label_side>left</label_side>
+                <label_angle>172</label_angle>
+            </display>
+        </aux>
+        <aux name="C">
+            <eqn>A*(grounding_line^2)-lambda*Length {used for finding the intersection of snowline and glacier surface}</eqn>
+            <display x="160" y="104" color="blue">
+                <label_side>right</label_side>
+                <label_angle>65</label_angle>
+            </display>
+        </aux>
+        <aux name="grounding_line">
+            <eqn>(initial_grounding_line*1e3)-(dQ*dxdQ)</eqn>
+            <display x="169" y="320" color="blue">
+                <label_side>left</label_side>
+                <label_angle>144</label_angle>
+                <format precision="0" />
+            </display>
+        </aux>
+        <aux name="initial_grounding_line">
+            <doc>the initial position of the grounding line of the snow line in km relative to the center of the glacier.  Negative values mean toward colder regions, positive is towards the warmer regions.</doc>
+            <eqn>-400 {km}</eqn>
+            <display x="105" y="358" color="blue" />
+        </aux>
+        <aux name="epsilon">
+            <doc>this is the ratio of the accumulation rate divided by the melting or ablation rate</doc>
+            <eqn> .24 { ratio of rates; accumulation rate/ablation rate; equation 6 in the handout }</eqn>
+            <display x="572" y="138" color="blue">
+                <label_angle>315</label_angle>
+            </display>
+        </aux>
+        <aux name="Accum_length">
+            <eqn>IF Length&gt;snow_line_position THEN Length+snow_line_position ELSE Length+Length</eqn>
+            <display x="294" y="172" color="blue">
+                <label_side>top</label_side>
+                <label_angle>50</label_angle>
+                <format precision="0" />
+            </display>
+        </aux>
+        <aux name="Ablation_length">
+            <eqn>IF Length&gt;snow_line_position THEN Length-snow_line_position ELSE 0</eqn>
+            <display x="367" y="98" color="blue">
+                <label_side>top</label_side>
+                <label_angle>115</label_angle>
+                <format precision="0" />
+            </display>
+        </aux>
+        <stock name="X_sect_Area">
+            <eqn>4/3*SQRT(lambda)*((initial_length_km*1e3)^(1.5))  { the initial cross-sectional area of the glacier, from equation 2 in the handout; this area grows/shrinks with time }</eqn>
+            <inflow>area_change</inflow>
+            <non_negative />
+            <display x="429" y="214" color="blue">
+                <label_side>right</label_side>
+            </display>
+        </stock>
+        <flow name="area_change">
+            <eqn>seed_area*ablation_rate + Accum_length*accumulation_rate - Ablation_length*ablation_rate {rate of change of area; equation 5 in handout; note that the first term is only there to deal with the case that the length is 0 AND the grounding line is larger than 0}</eqn>
+            <display x="428" y="158" color="blue">
+                <label_side>right</label_side>
+                <label_angle>8</label_angle>
+                <pts>
+                    <pt x="428" y="120" />
+                    <pt x="428" y="197" />
+                </pts>
+                <format precision="0" />
+            </display>
+        </flow>
+        <aux name="length_in_km">
+            <eqn>Length/1e3 {for plotting purposes}</eqn>
+            <display x="301" y="280" color="blue" />
+        </aux>
+        <aux name="grounding_line_km">
+            <eqn>grounding_line/1000 {converting to km for plotting purposes}</eqn>
+            <display x="71" y="313" color="blue">
+                <label_side>top</label_side>
+                <label_angle>73</label_angle>
+            </display>
+        </aux>
+        <aux name="Length">
+            <eqn>((((.75*X_sect_Area)^2)/lambda)^(1/3)) {from Equation 4 in the handout}</eqn>
+            <display x="325" y="241" color="blue">
+                <label_side>left</label_side>
+                <label_angle>200</label_angle>
+                <scale min="-325300" max="2047000" />
+                <format precision="0" />
+            </display>
+        </aux>
+        <aux name="initial_length_km">
+            <eqn>500 {m starting length}</eqn>
+            <display x="528" y="256" color="blue">
+                <scale min="2833" max="988400" />
+            </display>
+        </aux>
+        <aux name="Milank_switch">
+            <doc>if this is ON (=1), then the Milankovitch (orbital) variation in summer insolation is turned on, causing the grounding line position to change.  If it is OFF (=0) then there is no variation in the grounding line position</doc>
+            <eqn>0 {Set to 1 if including Milankovitch cycles, otherwise set to 0}</eqn>
+            <display x="314" y="456" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="612" page_height="792" page_sequence="row" pages_row_count="3" pages_column_count="2" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" report_interval="200" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="320" y="233" uid="0">
+                <from>Length</from>
+                <to>Accum_length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="328" y="232" uid="1">
+                <from>Length</from>
+                <to>Ablation_length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="316" y="240" uid="2">
+                <from>Length</from>
+                <to>C</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="538" y="177" uid="3">
+                <from>accumulation_rate</from>
+                <to>ablation_rate</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="185" y="385" uid="4">
+                <from>dxdQ</from>
+                <to>grounding_line</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="329" y="388" uid="5">
+                <from>Qt</from>
+                <to>dQ</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="240" y="388" uid="6">
+                <from>dQ</from>
+                <to>grounding_line</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="169" y="311" uid="7">
+                <from>grounding_line</from>
+                <to>B</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="169" y="311" uid="8">
+                <from>grounding_line</from>
+                <to>C</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="128" y="66" uid="9">
+                <from>A</from>
+                <to>B</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="114" y="357" uid="10">
+                <from>initial_grounding_line</from>
+                <to>grounding_line</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="137" y="66" uid="11">
+                <from>A</from>
+                <to>C</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="201" y="44" uid="12">
+                <from>slope</from>
+                <to>A</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="141" y="59" uid="13">
+                <from>A</from>
+                <to>snow_line_position</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="120" y="192" uid="14">
+                <from>B</from>
+                <to>snow_line_position</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="73" y="114" uid="15">
+                <from>lambda</from>
+                <to>C</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="70" y="127" uid="16">
+                <from>lambda</from>
+                <to>B</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="375" y="103" uid="17">
+                <from>Ablation_length</from>
+                <to>area_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="179" y="319" uid="18">
+                <from>grounding_line</from>
+                <to>seed_area</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="169" y="103" uid="19">
+                <from>C</from>
+                <to>snow_line_position</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="171" y="311" uid="20">
+                <from>grounding_line</from>
+                <to>snow_line_position</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="566" y="131" uid="21">
+                <from>epsilon</from>
+                <to>ablation_rate</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="334" y="245" uid="22">
+                <from>Length</from>
+                <to>seed_area</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="372" y="339" uid="23">
+                <from>seed_area</from>
+                <to>area_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="236" y="126" uid="24">
+                <from>snow_line_position</from>
+                <to>Accum_length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="237" y="113" uid="25">
+                <from>snow_line_position</from>
+                <to>Ablation_length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="303" y="171" uid="26">
+                <from>Accum_length</from>
+                <to>area_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="530" y="188" uid="27">
+                <from>accumulation_rate</from>
+                <to>area_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="497" y="116" uid="28">
+                <from>ablation_rate</from>
+                <to>area_change</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="316" y="238" uid="29">
+                <from>Length</from>
+                <to>snow_line_position</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="159" y="323" uid="30">
+                <from>grounding_line</from>
+                <to>grounding_line_km</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="407" y="211" uid="31">
+                <from>X_sect_Area</from>
+                <to>Length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="73" y="123" uid="32">
+                <from>lambda</from>
+                <to>Length</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="320" y="249" uid="33">
+                <from>Length</from>
+                <to>length_in_km</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="222" y="443" uid="34">
+                <from>Q0</from>
+                <to>dQ</to>
+                <color>#FF007F</color>
+            </connector>
+            <connector x="308" y="449" uid="35">
+                <from>Milank_switch</from>
+                <to>dQ</to>
+                <color>#FF007F</color>
+            </connector>
+            <popup x="302" y="624">
+                <stacked_container visible="false" height="282" width="492" visible_index="0" uid="pad_202593238">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-660923748" comparative="true" time_precision="2" from="-300000" to="0">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="length_in_km" />
+                            <data name="Run 42 data" />
+                        </plot>
+                    </graph>
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-660923748" time_precision="2" from="-300000" to="0">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Ablation_length" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Accum_length" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="251" y="565" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_202593238">
+                <label_side>bottom</label_side>
+            </pad_icon>
+            <text_box x="368" y="387" uid="36" color="black" font-family="Arial" font-size="12" font-style="italic" margin="5" width="178" height="92">Qt is the insolation from 300kyr to present for summer 55°N</text_box>
+            <text_box x="109" y="233" uid="37" color="black" font-family="Arial" font-size="18" font-weight="bold" font-style="italic" text-align="center" margin="1" width="179" height="54" appearance="transparent" />
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

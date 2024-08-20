@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name />
+        <uuid>6b390026-67a5-4837-a0b2-82be34ad94d3</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>0</start>
+        <stop>100</stop>
+        <dt>0.25</dt>
+        <method>Euler</method>
+        <time_units>seconds</time_units>
+    </sim_specs>
+    <model_units>
+        <units>
+            <eqn>m^3/s</eqn>
+        </units>
+    </model_units>
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="water_tub">
+            <eqn>0</eqn>
+            <inflow>faucet</inflow>
+            <outflow>drain</outflow>
+            <non_negative />
+            <units>cubic meters</units>
+            <display x="239" y="188" color="blue">
+                <scale min="0" max="38.210000000000001" />
+            </display>
+        </stock>
+        <flow name="faucet">
+            <eqn>1</eqn>
+            <non_negative />
+            <units>m^3/s</units>
+            <display x="172" y="188" color="blue">
+                <pts>
+                    <pt x="127" y="188" />
+                    <pt x="217" y="188" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="area_of_tub_base">
+            <eqn>0.5</eqn>
+            <units>square meters</units>
+            <display x="121" y="273" color="blue" />
+        </aux>
+        <aux name="gravity">
+            <eqn>9.81</eqn>
+            <units>meters per second squared</units>
+            <display x="143" y="387" color="blue" />
+        </aux>
+        <aux name="depth_of_water">
+            <eqn>water_tub/area_of_tub_base</eqn>
+            <units>meters</units>
+            <display x="229" y="284" color="blue" />
+        </aux>
+        <aux name="drain_velocity">
+            <eqn>sqrt(2*gravity*depth_of_water)</eqn>
+            <units>meters per second</units>
+            <display x="300" y="373" color="blue" />
+        </aux>
+        <flow name="drain">
+            <eqn>drain_velocity*drain_area</eqn>
+            <non_negative />
+            <units>m^3/s</units>
+            <display x="314" y="186" color="blue">
+                <pts>
+                    <pt x="261" y="186" />
+                    <pt x="368" y="186" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="drain_area">
+            <eqn>0.05</eqn>
+            <units>square meters</units>
+            <display x="375" y="289" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" page_rows="1" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.25" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="130" y="275" uid="0" color="#FF007F">
+                <from>area_of_tub_base</from>
+                <to>depth_of_water</to>
+            </connector>
+            <connector x="237" y="205" uid="1" color="#FF007F">
+                <from>water_tub</from>
+                <to>depth_of_water</to>
+            </connector>
+            <connector x="235" y="291" uid="2" color="#FF007F">
+                <from>depth_of_water</from>
+                <to>drain_velocity</to>
+            </connector>
+            <connector x="152" y="388" uid="3" color="#FF007F">
+                <from>gravity</from>
+                <to>drain_velocity</to>
+            </connector>
+            <connector x="299" y="364" uid="4" color="#FF007F">
+                <from>drain_velocity</from>
+                <to>drain</to>
+            </connector>
+            <connector x="372" y="280" uid="5" color="#FF007F">
+                <from>drain_area</from>
+                <to>drain</to>
+            </connector>
+            <popup x="273" y="278">
+                <stacked_container visible="false" height="360" width="632" visible_index="0" uid="pad_186440314">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-790845295" time_precision="2" from="0" to="200">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="40.56" />
+                            <entity name="water_tub" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="4" />
+                            <entity name="faucet" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>2</index>
+                            <color>#008F44</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="4" />
+                            <entity name="drain" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="197" y="483" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_186440314">
+                <label_side>bottom</label_side>
+            </pad_icon>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

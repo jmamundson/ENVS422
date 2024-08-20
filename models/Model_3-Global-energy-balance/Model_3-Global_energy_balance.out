@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Accessing STELLA}{}% 1
+\BOOKMARK [1][-]{section.2}{Basic Concepts and Processes}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Insolation / incoming solar radiation}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Reflection / albedo}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Absorption of energy}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Storage of thermal energy}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Heat emission / radiation}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{Heat transport by evaporation and condensation}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Heat transfer by convection}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Constructing a STELLA Model of Earth's energy balance}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Initial values of reservoirs}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Definition of flows}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Temperature of the atmosphere and the Earth's surface}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Model time step}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Numerical experiments}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Altering the solar input \204 investigating the response time and sensitivity}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Altering the cloud cover}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Removing the greenhouse effect}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Enhancing the Greenhouse}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.5}{Comparing Different Causes of Warming}{section.4}% 20

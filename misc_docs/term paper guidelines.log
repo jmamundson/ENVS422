@@ -1,0 +1,315 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2022.11.29)  11 JAN 2023 14:05
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"term paper guidelines.tex"
+(./term paper guidelines.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-07-15>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/03/10 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen139
+\ar@mcellbox=\box51
+\extrarowheight=\dimen140
+\NC@list=\toks16
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box52
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks17
+\verbatim@line=\toks18
+\verbatim@in@stream=\read2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count193
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen143
+\c@nlinenum=\count194
+\TeXr@lab=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen144
+\TX@old@table=\dimen145
+\TX@old@col=\dimen146
+\TX@target=\dimen147
+\TX@delta=\dimen148
+\TX@cols=\count195
+\TX@ftn=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count196
+\l__pdf_internal_box=\box53
+)
+(./term paper guidelines.aux)
+\openout1 = `"term paper guidelines.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count197
+\scratchdimen=\dimen149
+\scratchbox=\box54
+\nofMPsegments=\count198
+\nofMParguments=\count199
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count266
+\MPscratchDim=\dimen150
+\MPnumerator=\count267
+\makeMPintoPDFobject=\count268
+\everyMPtoPDFconversion=\toks23
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Ventures into back-
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 ground in-for-ma-tion or
+ []
+
+
+Underfull \hbox (badness 6592) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Clearly mo-ti-vated by
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 be-tween pro-cesses
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 not ad-dress sys-tem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Some sec-tions were
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Very dis-or-ga-nized and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 no clear ar-gu-ments
+ []
+
+
+Underfull \hbox (badness 4013) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 in-tro-duc-tion, dis-cusses
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Contains key ob-ser-va-
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 the-size re-sults, dis-cuss
+ []
+
+
+Underfull \hbox (badness 3291) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 un-cer-tainty, or fu-ture
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Poor sum-mary that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 doesn't pull to-gether
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Good use of pri-mary
+ []
+
+
+Underfull \hbox (badness 1509) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 lit-er-a-ture, with ex-ten-
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 sive use of at least
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Too few peer-reviewed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 ar-ti-cles or re-lied
+ []
+
+
+Underfull \hbox (badness 7099) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 too heav-ily on non-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 peer-reviewed ar-ti-cles
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 fol-low, smooth tran-si-
+ []
+
+
+Underfull \hbox (badness 3769) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 tions , gram-mat-i-cally
+ []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Some as-pects are dif-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 fi-cult to fol-low, many
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 gram-mat-i-cal mis-takes,
+ []
+
+
+Underfull \hbox (badness 1221) in paragraph at lines 69--69
+\OT1/cmr/m/n/10.95 or does not build to-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/10.95 Numerous gram-mat-i-cal
+ []
+
+[3
+
+] (./term paper guidelines.aux) ) 
+Here is how much of TeX's memory you used:
+ 2408 strings out of 479940
+ 39328 string characters out of 5886928
+ 345759 words of memory out of 5000000
+ 20620 multiletter control sequences out of 15000+600000
+ 472993 words of font info for 40 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 55i,10n,62p,829b,276s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/jason/.texlive2022/texmf-var/fonts/pk/
+ljfour/jknappen/ec/tcrm1095.600pk></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmti10.pfb>
+Output written on "term paper guidelines.pdf" (3 pages, 56339 bytes).
+PDF statistics:
+ 34 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

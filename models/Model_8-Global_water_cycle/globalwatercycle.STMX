@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name />
+        <uuid>6c23316b-60fe-437f-adb4-ab2b364a2d1c</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>0</start>
+        <stop>100</stop>
+        <dt>0.01</dt>
+        <method>RK2</method>
+        <time_units>Years</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="586" height="767" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="Terrestrial_Atm">
+            <eqn>4.5</eqn>
+            <inflow>Advection</inflow>
+            <inflow>Evapotranspiration</inflow>
+            <outflow>Rain_1</outflow>
+            <outflow>Snow</outflow>
+            <non_negative />
+            <display x="120" y="100" color="blue" />
+        </stock>
+        <stock name="Marine_Atm">
+            <eqn>11</eqn>
+            <inflow>Evaporation</inflow>
+            <outflow>Advection</outflow>
+            <outflow>Rain_2</outflow>
+            <non_negative />
+            <display x="460" y="100" color="blue" />
+        </stock>
+        <flow name="Advection">
+            <eqn>Marine_Atm*(37/INIT(Marine_Atm))</eqn>
+            <non_negative />
+            <display x="290" y="93" color="blue">
+                <pts>
+                    <pt x="438" y="93" />
+                    <pt x="142" y="93" />
+                </pts>
+            </display>
+        </flow>
+        <stock name="Land">
+            <eqn>275</eqn>
+            <inflow>Rain_1</inflow>
+            <outflow>Evapotranspiration</outflow>
+            <outflow>Stream_flow</outflow>
+            <outflow>Percolation</outflow>
+            <non_negative />
+            <display x="120" y="300" color="blue" />
+        </stock>
+        <stock name="Ice">
+            <eqn>27500</eqn>
+            <inflow>Snow</inflow>
+            <outflow>Melting</outflow>
+            <non_negative />
+            <display x="238" y="221" color="blue" />
+        </stock>
+        <flow name="Evapotranspiration">
+            <eqn>Land*(71/INIT(Land))</eqn>
+            <non_negative />
+            <display x="125" y="200" color="blue">
+                <pts>
+                    <pt x="125" y="283" />
+                    <pt x="125" y="117" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Rain_1">
+            <eqn>Terrestrial_Atm*(107/INIT(Terrestrial_Atm))</eqn>
+            <non_negative />
+            <display x="67" y="303" color="blue">
+                <pts>
+                    <pt x="98" y="102" />
+                    <pt x="37" y="102" />
+                    <pt x="37" y="303" />
+                    <pt x="98" y="303" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Snow">
+            <eqn>Terrestrial_Atm*(1/INIT(Terrestrial_Atm))</eqn>
+            <non_negative />
+            <display x="183" y="111" color="blue">
+                <pts>
+                    <pt x="142" y="111" />
+                    <pt x="224" y="111" />
+                    <pt x="224" y="204" />
+                </pts>
+            </display>
+        </flow>
+        <stock name="Oceans">
+            <eqn>1350000</eqn>
+            <inflow>Rain_2</inflow>
+            <inflow>Melting</inflow>
+            <inflow>Stream_flow</inflow>
+            <inflow>Discharge</inflow>
+            <outflow>Evaporation</outflow>
+            <non_negative />
+            <display x="460" y="300" color="blue" />
+        </stock>
+        <flow name="Rain_2">
+            <eqn>Marine_Atm*(398/INIT(Marine_Atm))</eqn>
+            <non_negative />
+            <display x="467" y="200" color="blue">
+                <pts>
+                    <pt x="467" y="117" />
+                    <pt x="467" y="283" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Evaporation">
+            <eqn>Oceans*(435/INIT(Oceans))</eqn>
+            <non_negative />
+            <display x="517" y="95" color="blue">
+                <pts>
+                    <pt x="482" y="302" />
+                    <pt x="552" y="302" />
+                    <pt x="552" y="95" />
+                    <pt x="482" y="95" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Melting">
+            <eqn>Ice*(1/INIT(Ice))</eqn>
+            <non_negative />
+            <display x="351" y="231" color="blue">
+                <pts>
+                    <pt x="260" y="231" />
+                    <pt x="442" y="231" />
+                    <pt x="442" y="283" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Stream_flow">
+            <eqn>Land*(34/INIT(Land))</eqn>
+            <non_negative />
+            <display x="290" y="306" color="blue">
+                <pts>
+                    <pt x="142" y="306" />
+                    <pt x="438" y="306" />
+                </pts>
+            </display>
+        </flow>
+        <stock name="Groundwater">
+            <eqn>8200</eqn>
+            <inflow>Percolation</inflow>
+            <outflow>Discharge</outflow>
+            <non_negative />
+            <display x="300" y="400" color="blue" />
+        </stock>
+        <flow name="Percolation">
+            <eqn>Land*(2/INIT(Land))</eqn>
+            <non_negative />
+            <display x="205" y="405" color="blue">
+                <pts>
+                    <pt x="132" y="317" />
+                    <pt x="132" y="405" />
+                    <pt x="278" y="405" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Discharge">
+            <eqn>Groundwater*(2/INIT(Groundwater))</eqn>
+            <non_negative />
+            <display x="396" y="407" color="blue">
+                <pts>
+                    <pt x="322" y="407" />
+                    <pt x="470" y="407" />
+                    <pt x="470" y="317" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Sea_level">
+            <eqn>100*(Oceans-INIT(Oceans))*1e12/3.61e14</eqn>
+            <display x="548" y="389" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="586" page_height="767" page_sequence="row" page_rows="2" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.01" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="115" y="117" uid="0" color="#FF007F">
+                <from>Terrestrial_Atm</from>
+                <to>Rain_1</to>
+            </connector>
+            <connector x="140" y="283" uid="1" color="#FF007F">
+                <from>Land</from>
+                <to>Evapotranspiration</to>
+            </connector>
+            <connector x="438" y="89" uid="2" color="#FF007F">
+                <from>Marine_Atm</from>
+                <to>Advection</to>
+            </connector>
+            <connector x="142" y="116" uid="3" color="#FF007F">
+                <from>Terrestrial_Atm</from>
+                <to>Snow</to>
+            </connector>
+            <connector x="259" y="217" uid="4" color="#FF007F">
+                <from>Ice</from>
+                <to>Melting</to>
+            </connector>
+            <connector x="474" y="284" uid="5" color="#FF007F">
+                <from>Oceans</from>
+                <to>Evaporation</to>
+            </connector>
+            <connector x="458" y="117" uid="6" color="#FF007F">
+                <from>Marine_Atm</from>
+                <to>Rain_2</to>
+            </connector>
+            <connector x="141" y="310" uid="7" color="#FF007F">
+                <from>Land</from>
+                <to>Stream_flow</to>
+            </connector>
+            <connector x="131" y="317" uid="8" color="#FF007F">
+                <from>Land</from>
+                <to>Percolation</to>
+            </connector>
+            <connector x="322" y="398" uid="9" color="#FF007F">
+                <from>Groundwater</from>
+                <to>Discharge</to>
+            </connector>
+            <connector x="480" y="317" uid="10" color="#FF007F">
+                <from>Oceans</from>
+                <to>Sea_level</to>
+            </connector>
+            <popup x="145" y="127">
+                <stacked_container visible="false" height="476" width="821" visible_index="0" uid="pad_80811562">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-847007767" time_precision="2" from="0" to="100">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Groundwater" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Ice" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Land" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>3</index>
+                            <color>#008F44</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Marine_Atm" />
+                        </plot>
+                        <plot pen_width="1" precision="0">
+                            <index>4</index>
+                            <color>#FF7F00</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Terrestrial_Atm" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="222" y="521" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_80811562">
+                <label_side>bottom</label_side>
+            </pad_icon>
+            <popup x="145" y="128">
+                <stacked_container visible="false" height="476" width="821" visible_index="0" uid="pad_190640918">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-847007767" time_precision="2" from="0" to="100">
+                        <plot pen_width="1" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <entity name="Sea_level" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="437" y="491" width="26" height="22" color="#008F44" label="Graph 2" type="graph" icon_of="pad_190640918">
+                <label_side>bottom</label_side>
+            </pad_icon>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

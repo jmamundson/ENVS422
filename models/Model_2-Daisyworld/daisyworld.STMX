@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name />
+        <uuid>ce604d38-e33c-4909-a288-bcd7b0893964</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>0</start>
+        <stop>200</stop>
+        <dt>0.25</dt>
+        <method>Euler</method>
+        <time_units>Time</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="white">
+            <eqn>0</eqn>
+            <inflow>white_change</inflow>
+            <non_negative />
+            <display x="110" y="216" color="blue" />
+        </stock>
+        <stock name="uncovered">
+            <eqn>1</eqn>
+            <outflow>white_change</outflow>
+            <outflow>black_change</outflow>
+            <non_negative />
+            <display x="269" y="150" color="blue" />
+        </stock>
+        <stock name="black">
+            <eqn>0</eqn>
+            <inflow>black_change</inflow>
+            <non_negative />
+            <display x="451" y="219" color="blue" />
+        </stock>
+        <flow name="white_change">
+            <eqn>white*(white_growth_rate-death_rate)+0.0001</eqn>
+            <display x="177" y="147" color="blue">
+                <pts>
+                    <pt x="247" y="147" />
+                    <pt x="107" y="147" />
+                    <pt x="107" y="199" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="black_change">
+            <eqn>black*(black_growth_rate-death_rate)+0.0001</eqn>
+            <display x="372" y="149" color="blue">
+                <pts>
+                    <pt x="291" y="149" />
+                    <pt x="453" y="149" />
+                    <pt x="453" y="202" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="death_rate">
+            <eqn>0.3</eqn>
+            <display x="270" y="56" color="blue" />
+        </aux>
+        <aux name="white_growth_rate">
+            <eqn>IF (Tw&gt;273+5) AND (TW&lt;273+40) THEN uncovered*(1-0.003625*(273+22.5-Tw)^2) ELSE 0</eqn>
+            <display x="184" y="249" color="blue" />
+        </aux>
+        <aux name="black_growth_rate">
+            <eqn>IF (Tb&gt;273+5) AND (Tb&lt;273+40) THEN uncovered*(1-0.003625*(273+22.5-Tb)^2) ELSE 0</eqn>
+            <display x="366" y="234" color="blue" />
+        </aux>
+        <aux name="planetary_albedo">
+            <eqn>black*black_albedo+white*white_albedo+uncovered*uncovered_albedo</eqn>
+            <display x="274" y="312" color="blue" />
+        </aux>
+        <aux name="white_albedo">
+            <eqn>0.75</eqn>
+            <display x="147" y="342" color="blue">
+                <scale min="0.25" max="0.25" />
+            </display>
+        </aux>
+        <aux name="uncovered_albedo">
+            <eqn>0.5</eqn>
+            <display x="275" y="383" color="blue" />
+        </aux>
+        <aux name="T">
+            <eqn>(irradiance*(1-planetary_albedo)/stefan_boltzmann)^0.25</eqn>
+            <display x="191" y="410" color="blue" />
+        </aux>
+        <aux name="Tw">
+            <eqn>absorp*(planetary_albedo-white_albedo)+T</eqn>
+            <display x="105" y="410" color="blue" />
+        </aux>
+        <aux name="Tb">
+            <eqn>absorp*(planetary_albedo-black_albedo)+T</eqn>
+            <display x="369" y="534" color="blue" />
+        </aux>
+        <aux name="absorp">
+            <eqn>20</eqn>
+            <display x="258" y="494" color="blue" />
+        </aux>
+        <aux name="stefan_boltzmann">
+            <eqn>5.6704*10^(-8)</eqn>
+            <display x="306" y="448" color="blue" />
+        </aux>
+        <aux name="irradiance">
+            <eqn>500+1100/200*TIME</eqn>
+            <display x="130" y="490" color="blue" />
+        </aux>
+        <aux name="Tdead">
+            <eqn>(irradiance*0.5/stefan_boltzmann)^0.25-273</eqn>
+            <display x="191" y="542" color="blue" />
+        </aux>
+        <aux name="Tc">
+            <eqn>T-273</eqn>
+            <display x="80" y="465" color="blue" />
+        </aux>
+        <aux name="black_albedo">
+            <eqn>0.25</eqn>
+            <display x="424" y="356" color="blue">
+                <scale min="0.38200000000000001" max="0.54900000000000004" />
+            </display>
+        </aux>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" page_rows="1" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.25" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="260" y="59" uid="0" color="#FF007F">
+                <from>death_rate</from>
+                <to>white_change</to>
+            </connector>
+            <connector x="279" y="59" uid="1" color="#FF007F">
+                <from>death_rate</from>
+                <to>black_change</to>
+            </connector>
+            <connector x="183" y="240" uid="2" color="#FF007F">
+                <from>white_growth_rate</from>
+                <to>white_change</to>
+            </connector>
+            <connector x="369" y="226" uid="3" color="#FF007F">
+                <from>black_growth_rate</from>
+                <to>black_change</to>
+            </connector>
+            <connector x="132" y="200" uid="4" color="#FF007F">
+                <from>white</from>
+                <to>white_change</to>
+            </connector>
+            <connector x="429" y="206" uid="5" color="#FF007F">
+                <from>black</from>
+                <to>black_change</to>
+            </connector>
+            <connector x="156" y="341" uid="6" color="#FF007F">
+                <from>white_albedo</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="423" y="365" uid="7" color="#FF007F">
+                <from>black_albedo</from>
+                <to>Tb</to>
+            </connector>
+            <connector x="272" y="375" uid="8" color="#FF007F">
+                <from>uncovered_albedo</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="117" y="233" uid="9" color="#FF007F">
+                <from>white</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="270" y="167" uid="10" color="#FF007F">
+                <from>uncovered</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="429" y="236" uid="11" color="#FF007F">
+                <from>black</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="268" y="318" uid="12" color="#FF007F">
+                <from>planetary_albedo</from>
+                <to>T</to>
+            </connector>
+            <connector x="297" y="447" uid="13" color="#FF007F">
+                <from>stefan_boltzmann</from>
+                <to>T</to>
+            </connector>
+            <connector x="143" y="350" uid="14" color="#FF007F">
+                <from>white_albedo</from>
+                <to>Tw</to>
+            </connector>
+            <connector x="266" y="498" uid="15" color="#FF007F">
+                <from>absorp</from>
+                <to>Tb</to>
+            </connector>
+            <connector x="250" y="490" uid="16" color="#FF007F">
+                <from>absorp</from>
+                <to>Tw</to>
+            </connector>
+            <connector x="137" y="484" uid="17" color="#FF007F">
+                <from>irradiance</from>
+                <to>T</to>
+            </connector>
+            <connector x="266" y="316" uid="18" color="#FF007F">
+                <from>planetary_albedo</from>
+                <to>Tw</to>
+            </connector>
+            <connector x="182" y="408" uid="19" color="#FF007F">
+                <from>T</from>
+                <to>Tw</to>
+            </connector>
+            <connector x="197" y="417" uid="20" color="#FF007F">
+                <from>T</from>
+                <to>Tb</to>
+            </connector>
+            <connector x="415" y="356" uid="21" color="#FF007F">
+                <from>black_albedo</from>
+                <to>planetary_albedo</to>
+            </connector>
+            <connector x="280" y="318" uid="22" color="#FF007F">
+                <from>planetary_albedo</from>
+                <to>Tb</to>
+            </connector>
+            <connector x="101" y="403" uid="23" color="#FF007F">
+                <from>Tw</from>
+                <to>white_growth_rate</to>
+            </connector>
+            <connector x="377" y="530" uid="24" color="#FF007F">
+                <from>Tb</from>
+                <to>black_growth_rate</to>
+            </connector>
+            <connector x="261" y="168" uid="25" color="#FF007F">
+                <from>uncovered</from>
+                <to>white_growth_rate</to>
+            </connector>
+            <connector x="281" y="168" uid="26" color="#FF007F">
+                <from>uncovered</from>
+                <to>black_growth_rate</to>
+            </connector>
+            <connector x="135" y="497" uid="27" color="#FF007F">
+                <from>irradiance</from>
+                <to>Tdead</to>
+            </connector>
+            <connector x="298" y="449" uid="28" color="#FF007F">
+                <from>stefan_boltzmann</from>
+                <to>Tdead</to>
+            </connector>
+            <connector x="184" y="415" uid="29" color="#FF007F">
+                <from>T</from>
+                <to>Tc</to>
+            </connector>
+            <popup x="224" y="116">
+                <stacked_container visible="false" height="484" width="834" visible_index="0" uid="pad_229290568">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-786877350" time_precision="2" from="0" to="200">
+                        <plot pen_width="3" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="-15" max="75" />
+                            <entity name="Tc" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="-15" max="75" />
+                            <entity name="Tdead" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="262" y="593" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_229290568">
+                <label_side>bottom</label_side>
+            </pad_icon>
+            <popup x="224" y="116">
+                <stacked_container visible="false" height="484" width="834" visible_index="0" uid="pad_229367138">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-786877350" time_precision="2" from="0" to="200">
+                        <plot pen_width="3" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1" />
+                            <entity name="uncovered" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1" />
+                            <entity name="black" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1" />
+                            <entity name="white" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="456" y="581" width="26" height="22" color="#008F44" label="Graph 2" type="graph" icon_of="pad_229367138">
+                <label_side>bottom</label_side>
+            </pad_icon>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

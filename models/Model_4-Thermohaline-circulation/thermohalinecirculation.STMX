@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name />
+        <uuid>a6c4a260-2fc5-46d2-8c11-d401a7961588</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <isee:sensi_specs runs="11" run="false">
+        <isee:variable name="deltaS" type="incremental" min="0" max="1" />
+        <isee:variable name="deltaT" type="incremental" min="1" max="0" />
+    </isee:sensi_specs>
+    <sim_specs>
+        <start>0</start>
+        <stop>15</stop>
+        <dt>0.01</dt>
+        <method>RK2</method>
+        <time_units>Time</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <flow name="heat_exchange">
+            <eqn>(Teq-deltaT)-(deltaT*Q)</eqn>
+            <display x="321" y="168" color="blue">
+                <pts>
+                    <pt x="391" y="168" />
+                    <pt x="251" y="168" />
+                </pts>
+            </display>
+        </flow>
+        <stock name="deltaT">
+            <eqn>0.5</eqn>
+            <inflow>heat_exchange</inflow>
+            <non_negative />
+            <display x="229" y="172" color="blue" />
+        </stock>
+        <aux name="Teq">
+            <eqn>1</eqn>
+            <display x="406" y="278" color="blue" />
+        </aux>
+        <aux name="R">
+            <eqn>2</eqn>
+            <display x="170" y="266" color="blue" />
+        </aux>
+        <aux name="delrho">
+            <eqn>abs((R*deltaS)-deltaT)</eqn>
+            <display x="213" y="319" color="blue" />
+        </aux>
+        <aux name="lambda">
+            <eqn>1/5</eqn>
+            <display x="270" y="266" color="blue" />
+        </aux>
+        <aux name="Q">
+            <eqn>delrho/lambda</eqn>
+            <display x="295" y="351" color="blue" />
+        </aux>
+        <aux name="delta">
+            <eqn>1/6</eqn>
+            <display x="400" y="361" color="blue" />
+        </aux>
+        <stock name="deltaS">
+            <eqn>0.5</eqn>
+            <inflow>salinity_exchange</inflow>
+            <non_negative />
+            <display x="262" y="423" color="blue" />
+        </stock>
+        <aux name="Seq">
+            <eqn>1</eqn>
+            <display x="352" y="511" color="blue" />
+        </aux>
+        <flow name="salinity_exchange">
+            <eqn>delta*(Seq-deltaS)-Q*deltaS</eqn>
+            <display x="345" y="417" color="blue">
+                <pts>
+                    <pt x="406" y="417" />
+                    <pt x="284" y="417" />
+                </pts>
+            </display>
+        </flow>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" page_rows="1" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.01" report_every_dt="true" scroll_x="0" scroll_y="64">
+            <connector x="401" y="271" uid="0" color="#FF007F">
+                <from>Teq</from>
+                <to>heat_exchange</to>
+            </connector>
+            <connector x="251" y="184" uid="1" color="#FF007F">
+                <from>deltaT</from>
+                <to>heat_exchange</to>
+            </connector>
+            <connector x="174" y="274" uid="2" color="#FF007F">
+                <from>R</from>
+                <to>delrho</to>
+            </connector>
+            <connector x="235" y="190" uid="3" color="#FF007F">
+                <from>deltaT</from>
+                <to>delrho</to>
+            </connector>
+            <connector x="221" y="323" uid="4" color="#FF007F">
+                <from>delrho</from>
+                <to>Q</to>
+            </connector>
+            <connector x="274" y="274" uid="5" color="#FF007F">
+                <from>lambda</from>
+                <to>Q</to>
+            </connector>
+            <connector x="296" y="342" uid="6" color="#FF007F">
+                <from>Q</from>
+                <to>heat_exchange</to>
+            </connector>
+            <connector x="300" y="358" uid="7" color="#FF007F">
+                <from>Q</from>
+                <to>salinity_exchange</to>
+            </connector>
+            <connector x="394" y="367" uid="8" color="#FF007F">
+                <from>delta</from>
+                <to>salinity_exchange</to>
+            </connector>
+            <connector x="284" y="439" uid="9" color="#FF007F">
+                <from>deltaS</from>
+                <to>salinity_exchange</to>
+            </connector>
+            <connector x="351" y="502" uid="10" color="#FF007F">
+                <from>Seq</from>
+                <to>salinity_exchange</to>
+            </connector>
+            <connector x="254" y="406" uid="11" color="#FF007F">
+                <from>deltaS</from>
+                <to>delrho</to>
+            </connector>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

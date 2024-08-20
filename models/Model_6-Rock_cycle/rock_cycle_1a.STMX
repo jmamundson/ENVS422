@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" />
+        <name>rock cycle</name>
+        <uuid>869e6bf4-c13d-4fed-8ebc-03560ad56c91</uuid>
+        <vendor>isee systems</vendor>
+        <product version="10.0.1" lang="en">iThink</product>
+    </header>
+    <sim_specs>
+        <start>0</start>
+        <stop>100</stop>
+        <dt>0.1</dt>
+        <method>Euler</method>
+        <time_units>100 Myr</time_units>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1350" height="710" />
+        <isee:security />
+        <isee:print_setup width="588" height="768" orientation="portrait" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="Ocean_Crust">
+            <eqn>5390000000</eqn>
+            <inflow>OC_Production</inflow>
+            <outflow>OC_Subduction</outflow>
+            <non_negative />
+            <display x="97" y="115" color="blue" />
+        </stock>
+        <stock name="Mantle">
+            <eqn>980000000000-0.5*1.33E10</eqn>
+            <inflow>MR_Subduction</inflow>
+            <inflow>OC_Subduction</inflow>
+            <outflow>OC_Production</outflow>
+            <outflow>Arc_Volcanism</outflow>
+            <non_negative />
+            <display x="265" y="115" color="blue" />
+        </stock>
+        <stock name="Cont_Ig_Rx">
+            <eqn>13300000000*0.5</eqn>
+            <inflow>Arc_Volcanism</inflow>
+            <inflow>Melting</inflow>
+            <outflow>CIR_Meta</outflow>
+            <outflow>CIR_Weathering</outflow>
+            <non_negative />
+            <display x="427" y="107" color="blue" />
+        </stock>
+        <stock name="Meta_Rx">
+            <eqn>5620000000</eqn>
+            <inflow>CIR_Meta</inflow>
+            <inflow>SR_Meta</inflow>
+            <outflow>MR_Subduction</outflow>
+            <outflow>Melting</outflow>
+            <outflow>MR_Weathering</outflow>
+            <non_negative />
+            <display x="147" y="293" color="blue" />
+        </stock>
+        <stock name="Seds">
+            <eqn>132000000</eqn>
+            <inflow>CIR_Weathering</inflow>
+            <inflow>SR_Weathering</inflow>
+            <inflow>MR_Weathering</inflow>
+            <outflow>Lithification</outflow>
+            <non_negative />
+            <display x="418" y="290" color="blue" />
+        </stock>
+        <stock name="Sed_Rx">
+            <eqn>1500000000</eqn>
+            <inflow>Lithification</inflow>
+            <outflow>SR_Weathering</outflow>
+            <outflow>SR_Meta</outflow>
+            <non_negative />
+            <display x="274" y="454" color="blue" />
+        </stock>
+        <flow name="OC_Production">
+            <eqn>7000000000</eqn>
+            <non_negative />
+            <display x="181" y="118" color="blue">
+                <pts>
+                    <pt x="243" y="118" />
+                    <pt x="119" y="118" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Arc_Volcanism">
+            <eqn>600000000</eqn>
+            <non_negative />
+            <display x="346" y="103" color="blue">
+                <pts>
+                    <pt x="287" y="103" />
+                    <pt x="405" y="103" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="MR_Subduction">
+            <eqn>Meta_Rx*6e8/5.62e9</eqn>
+            <non_negative />
+            <display x="209" y="215" color="blue">
+                <pts>
+                    <pt x="151" y="276" />
+                    <pt x="151" y="215" />
+                    <pt x="268" y="215" />
+                    <pt x="268" y="132" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Melting">
+            <eqn>Meta_Rx*1e8/5.62e9</eqn>
+            <non_negative />
+            <display x="358" y="150" color="blue">
+                <pts>
+                    <pt x="169" y="285" />
+                    <pt x="310" y="285" />
+                    <pt x="310" y="150" />
+                    <pt x="406" y="150" />
+                    <pt x="406" y="124" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="CIR_Meta">
+            <eqn>Cont_Ig_Rx*2e8/1.33e10</eqn>
+            <non_negative />
+            <display x="391" y="205" color="blue">
+                <pts>
+                    <pt x="432" y="124" />
+                    <pt x="432" y="205" />
+                    <pt x="350" y="205" />
+                    <pt x="350" y="304" />
+                    <pt x="169" y="304" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="CIR_Weathering">
+            <eqn>Cont_Ig_Rx*5e8/1.33e10</eqn>
+            <non_negative />
+            <display x="472" y="299" color="blue">
+                <pts>
+                    <pt x="449" y="122" />
+                    <pt x="504" y="122" />
+                    <pt x="504" y="299" />
+                    <pt x="440" y="299" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="SR_Weathering">
+            <eqn>Sed_Rx*2e8/1.50e9</eqn>
+            <non_negative />
+            <display x="351" y="450" color="blue">
+                <pts>
+                    <pt x="296" y="450" />
+                    <pt x="406" y="450" />
+                    <pt x="406" y="307" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="OC_Subduction">
+            <eqn>7000000000</eqn>
+            <non_negative />
+            <display x="183" y="171" color="blue">
+                <pts>
+                    <pt x="105" y="132" />
+                    <pt x="105" y="171" />
+                    <pt x="261" y="171" />
+                    <pt x="261" y="132" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="SR_Meta">
+            <eqn>Sed_Rx*7e8/1.50e9</eqn>
+            <non_negative />
+            <display x="194" y="450" color="blue">
+                <pts>
+                    <pt x="252" y="450" />
+                    <pt x="137" y="450" />
+                    <pt x="137" y="310" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Lithification">
+            <eqn>Seds*(9e8/1.32e8)</eqn>
+            <non_negative />
+            <display x="352" y="506" color="blue">
+                <pts>
+                    <pt x="433" y="307" />
+                    <pt x="433" y="506" />
+                    <pt x="271" y="506" />
+                    <pt x="271" y="471" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="MR_Weathering">
+            <eqn>Meta_Rx*2e8/5.62e9</eqn>
+            <non_negative />
+            <display x="270" y="351" color="blue">
+                <pts>
+                    <pt x="162" y="310" />
+                    <pt x="162" y="351" />
+                    <pt x="379" y="351" />
+                    <pt x="379" y="290" />
+                    <pt x="396" y="290" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="rel_mantle">
+            <eqn>Mantle/9.8e11</eqn>
+            <display x="138" y="48" color="blue" />
+        </aux>
+        <aux name="rel_cont_ig_rx">
+            <eqn>Cont_Ig_Rx/1.33e10</eqn>
+            <display x="500" y="56" color="blue" />
+        </aux>
+        <aux name="rel_meta_rx">
+            <eqn>Meta_Rx/5.62e9</eqn>
+            <display x="87" y="323" color="blue" />
+        </aux>
+        <aux name="rel_sed_rx">
+            <eqn>Sed_Rx/1.50e9</eqn>
+            <display x="241" y="542" color="blue" />
+        </aux>
+        <aux name="rel_seds">
+            <eqn>Seds/1.32e8</eqn>
+            <display x="505" y="374" color="blue" />
+        </aux>
+        <display show_pages="false" page_width="588" page_height="768" page_sequence="row" page_rows="1" page_cols="1" isee:show_values_on_hover="true" isee:converter_size="medium" zoom="100" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" report_interval="0.1" report_every_dt="true" scroll_x="0" scroll_y="0">
+            <connector x="243" y="102" uid="0" color="#FF007F">
+                <from>Mantle</from>
+                <to>rel_mantle</to>
+            </connector>
+            <connector x="148" y="276" uid="1" color="#FF007F">
+                <from>Meta_Rx</from>
+                <to>MR_Subduction</to>
+            </connector>
+            <connector x="169" y="284" uid="2" color="#FF007F">
+                <from>Meta_Rx</from>
+                <to>Melting</to>
+            </connector>
+            <connector x="133" y="310" uid="3" color="#FF007F">
+                <from>Meta_Rx</from>
+                <to>rel_meta_rx</to>
+            </connector>
+            <connector x="252" y="467" uid="4" color="#FF007F">
+                <from>Sed_Rx</from>
+                <to>SR_Meta</to>
+            </connector>
+            <connector x="258" y="471" uid="5" color="#FF007F">
+                <from>Sed_Rx</from>
+                <to>rel_sed_rx</to>
+            </connector>
+            <connector x="296" y="462" uid="6" color="#FF007F">
+                <from>Sed_Rx</from>
+                <to>SR_Weathering</to>
+            </connector>
+            <connector x="417" y="307" uid="7" color="#FF007F">
+                <from>Seds</from>
+                <to>Lithification</to>
+            </connector>
+            <connector x="437" y="307" uid="8" color="#FF007F">
+                <from>Seds</from>
+                <to>rel_seds</to>
+            </connector>
+            <connector x="436" y="123" uid="9" color="#FF007F">
+                <from>Cont_Ig_Rx</from>
+                <to>CIR_Weathering</to>
+            </connector>
+            <connector x="440" y="90" uid="10" color="#FF007F">
+                <from>Cont_Ig_Rx</from>
+                <to>rel_cont_ig_rx</to>
+            </connector>
+            <connector x="427" y="124" uid="11" color="#FF007F">
+                <from>Cont_Ig_Rx</from>
+                <to>CIR_Meta</to>
+            </connector>
+            <connector x="169" y="298" uid="12" color="#FF007F">
+                <from>Meta_Rx</from>
+                <to>MR_Weathering</to>
+            </connector>
+            <popup x="438" y="331">
+                <stacked_container visible="false" height="358" width="630" visible_index="0" uid="pad_73998666">
+                    <graph type="time_series" title="Untitled" background="#FFFFC9" show_grid="false" numbers_on_plots="true" isee:use_five_segments="false" isee:date_time="-786357978" time_precision="2" from="0" to="100">
+                        <plot pen_width="3" precision="0">
+                            <index>0</index>
+                            <color>blue</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1.5" />
+                            <entity name="rel_cont_ig_rx" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>1</index>
+                            <color>red</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1.5" />
+                            <entity name="rel_mantle" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>2</index>
+                            <color>fuchsia</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1.5" />
+                            <entity name="rel_meta_rx" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>3</index>
+                            <color>#008F44</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1.5" />
+                            <entity name="rel_seds" />
+                        </plot>
+                        <plot pen_width="3" precision="0">
+                            <index>4</index>
+                            <color>#FF7F00</color>
+                            <show_y_axis>true</show_y_axis>
+                            <scale min="0" max="1.5" />
+                            <entity name="rel_sed_rx" />
+                        </plot>
+                    </graph>
+                </stacked_container>
+            </popup>
+            <pad_icon x="144" y="607" width="26" height="22" color="#008F44" label="Graph 1" type="graph" icon_of="pad_73998666">
+                <label_side>bottom</label_side>
+            </pad_icon>
+        </display>
+        <interface scroll_x="0" scroll_y="0" zoom="100">
+            <simulation_delay>0.1</simulation_delay>
+            <pages show="false" row_count="1" column_count="1" home_page="1" width="788" height="528" />
+        </interface>
+    </model>
+</xmile>

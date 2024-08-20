@@ -1,0 +1,301 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.2.24)  19 MAR 2023 10:48
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Model_5-Ice-sheets.tex
+(./Model_5-Ice-sheets.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen139
+\ar@mcellbox=\box50
+\extrarowheight=\dimen140
+\NC@list=\toks16
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks17
+\verbatim@line=\toks18
+\verbatim@in@stream=\read2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count193
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip52
+\enit@outerparindent=\dimen143
+\enit@toks=\toks20
+\enit@inbox=\box52
+\enit@count@id=\count194
+\enitdp@description=\count195
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen144
+\WF@size=\dimen145
+\c@WF@wrappedlines=\count196
+\WF@box=\box53
+\WF@everypar=\toks21
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box54
+\beforetitleunit=\skip53
+\aftertitleunit=\skip54
+\ttl@plus=\dimen146
+\ttl@minus=\dimen147
+\ttl@toksa=\toks22
+\titlewidth=\dimen148
+\titlewidthlast=\dimen149
+\titlewidthfirst=\dimen150
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count197
+\l__pdf_internal_box=\box55
+)
+(./Model_5-Ice-sheets.aux)
+\openout1 = `Model_5-Ice-sheets.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count198
+\scratchdimen=\dimen151
+\scratchbox=\box56
+\nofMPsegments=\count199
+\nofMParguments=\count266
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count267
+\MPscratchDim=\dimen152
+\MPnumerator=\count268
+\makeMPintoPDFobject=\count269
+\everyMPtoPDFconversion=\toks24
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+<./greenland.png, id=1, 803.0pt x 1367.1075pt>
+File: ./greenland.png Graphic file (type png)
+<use ./greenland.png>
+Package pdftex.def Info: ./greenland.png  used on input line 47.
+(pdftex.def)             Requested size: 180.67499pt x 307.58592pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 51.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 51.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 51.
+
+Underfull \hbox (badness 1308) in paragraph at lines 51--52
+[]\OT1/cmr/m/n/10.95 It is com-mon to as-sume that ice be-haves as a de-
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 formable plas-tic ma-te-rial, which means that there is
+ []
+
+
+Underfull \hbox (badness 1394) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 for-ma-tion or flow) will oc-cur, and above which the
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 strain is lim-it-less. Stress is just a force act-ing on
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 an area, and shear stress is a force ap-plied par-al-
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 lel to a sur-face as op-posed to a force ap-plied per-
+ []
+
+
+Underfull \hbox (badness 2990) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 pen-dic-u-lar to a sur-face, which is called a nor-mal
+ []
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 stress. We talk about stresses rather than forces,
+ []
+
+
+Underfull \hbox (badness 2469) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 since stresses are what can cause ma-te-ri-als to de-
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 form (whether by flow or by frac-ture). The shear
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 51--52
+\OT1/cmr/m/n/10.95 stress at the base of a col-umn of ice, $\OML/cmm/m/it/10.95
+ ^^\[]$\OT1/cmr/m/n/10.95 , is given
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./greenland.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 57.
+
+<./ice_sheet_flow_v2.png, id=13, 219.7008pt x 131.5314pt>
+File: ./ice_sheet_flow_v2.png Graphic file (type png)
+<use ./ice_sheet_flow_v2.png>
+Package pdftex.def Info: ./ice_sheet_flow_v2.png  used on input line 59.
+(pdftex.def)             Requested size: 219.70026pt x 131.53107pt.
+<./weertmans_glacier_model_v2.png, id=15, 731.3724pt x 247.6452pt>
+File: ./weertmans_glacier_model_v2.png Graphic file (type png)
+<use ./weertmans_glacier_model_v2.png>
+Package pdftex.def Info: ./weertmans_glacier_model_v2.png  used on input line 8
+4.
+(pdftex.def)             Requested size: 469.75502pt x 159.06296pt.
+[2 <./ice_sheet_flow_v2.png>] [3 <./weertmans_glacier_model_v2.png>]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
+16.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
+
+Overfull \hbox (11.63998pt too wide) in paragraph at lines 130--131
+[]\OT1/cmr/m/n/10.95 How quickly does the ice sheet evolve to-ward its steady s
+tate? How fast does glacier grow/shrink?
+ []
+
+[4]
+<./grounding_line.png, id=30, 709.14937pt x 176.15813pt>
+File: ./grounding_line.png Graphic file (type png)
+<use ./grounding_line.png>
+Package pdftex.def Info: ./grounding_line.png  used on input line 155.
+(pdftex.def)             Requested size: 469.75502pt x 116.6921pt.
+ [5 <./grounding_line.png>] [6] [7] (./Model_5-Ice-sheets.aux) ) 
+Here is how much of TeX's memory you used:
+ 2922 strings out of 480129
+ 47819 string characters out of 5893409
+ 345534 words of memory out of 5000000
+ 20873 multiletter control sequences out of 15000+600000
+ 472993 words of font info for 40 fonts, out of 8000000 for 9000
+ 81 hyphenation exceptions out of 8191
+ 55i,7n,62p,1207b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/jason/.
+texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
+0.pfb>
+Output written on Model_5-Ice-sheets.pdf (7 pages, 1008260 bytes).
+PDF statistics:
+ 85 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+
