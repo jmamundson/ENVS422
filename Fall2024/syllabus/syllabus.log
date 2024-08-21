@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.1.10)  10 JAN 2023 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  20 AUG 2024 16:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -269,7 +269,13 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-] [3
+]
+Overfull \hbox (10.37024pt too wide) in paragraph at lines 126--127
+\OT1/cmr/m/n/10.95 dence of sex or gender-based dis-crim-i-na-tion to the UAS T
+i-tle IX Of-fice: https://uas.alaska.edu/equity-
+ []
+
+[3
 
 ] [4] [5
 
@@ -279,12 +285,12 @@ Package rerunfilecheck Info: File `syllabus.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 8177 strings out of 480204
- 128685 string characters out of 5895010
- 432110 words of memory out of 5000000
- 26054 multiletter control sequences out of 15000+600000
+ 8180 strings out of 480129
+ 128710 string characters out of 5893409
+ 432355 words of memory out of 5000000
+ 26066 multiletter control sequences out of 15000+600000
  472820 words of font info for 40 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
+ 81 hyphenation exceptions out of 8191
  60i,14n,63p,1197b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
@@ -292,10 +298,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on syllabus.pdf (5 pages, 97146 bytes).
+Output written on syllabus.pdf (5 pages, 97187 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  10 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
